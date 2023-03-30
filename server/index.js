@@ -5,6 +5,15 @@ const express = require("express");
 const morgan = require("morgan");
 const port = 8888
 
+const {
+  postNewUser,
+  postNewEntry,
+  getBrainDump,
+  postNewBrainer,
+  getJournalEntries,
+  postNewJournalEntry
+} = require('./handlers');
+
 express()
   // Below are methods that are included in express(). We chain them for convenience.
   // --------------------------------------------------------------------------------
@@ -14,6 +23,15 @@ express()
   .use(express.static("public"))
 
   // ---------------------------------
+  .post('/newUser', postNewUser)
+  .post('/newEntry', postNewEntry)
+
+  .get('/getBrainDump', getBrainDump)
+  .post('/newBrainer', postNewBrainer)
+
+  .get('/journalEntries', getJournalEntries)
+  .post('/newJournalEntry', postNewJournalEntry)
+
   // ---------------------------------
   // Nothing to modify below this line
 

@@ -1,0 +1,41 @@
+import { useEffect, useState } from "react"
+import styled from "styled-components"
+import Entry from "./Entry"
+
+
+const DailyEntries = () => {
+
+  const [ journalEntries, setJournalEntries] = useState([]) 
+
+  useEffect(() => {
+    fetch('/journalEntries')
+    .then(res => res.json())
+    .then(parsedData => {
+      setJournalEntries(parsedData.data)
+    })
+  },[])
+
+  return (
+    <Wrapper>
+    {journalEntries.length === 0 ? <>loading</>:  
+      <ul>
+        {journalEntries.map((entry) => {
+          return <Entry entry={entry}/>
+        })}
+      </ul>}
+    </Wrapper>
+  )
+}
+
+export default DailyEntries
+
+
+const Wrapper = styled.div`
+  width: 700px;
+  height: 50%;
+  border: 1px solid gray;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
