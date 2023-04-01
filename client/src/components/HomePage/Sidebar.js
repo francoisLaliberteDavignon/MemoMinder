@@ -3,9 +3,15 @@ import { Link } from "react-router-dom"
 
 const Sidebar = () => {
 
+
   return (
     <Wrapper>
-      Sidebar
+      <p>Add some stuff!</p>
+      <Nav to={'/new/journalEntry'}>New journal log</Nav>
+      <Nav to={'/new/brainer'}>New brainer</Nav>
+      <Nav to={'/new/event'}>New event</Nav>
+      <Nav to={'/new/affirmation'}>New affirmation</Nav>
+      <Nav to={'/new/habitLog'}>New habit log</Nav>
     </Wrapper>
   )
 }
@@ -18,5 +24,11 @@ const Wrapper = styled.div`
   height: 60vh;
   width: 150px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+`
+
+const Nav = styled(Link)`
+
 `

@@ -4,14 +4,13 @@ import { useState, useEffect } from "react"
 import NewSidebar from "./NewSidebar"
 import NewNavBar from './NewNavBar'
 
-const NewJournal = () => {
+const NewBrainer = () => {
 
-  const [ postData, setPostData ] = useState(null)
+  const [ postData, setPostData ] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch("/newJournalEntry", {
+    fetch("/newBrainer", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -27,9 +26,7 @@ const NewJournal = () => {
     })
     .catch((error) => {
       console.log(error)
-    });
-    
-  }
+    });  }
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -37,29 +34,27 @@ const NewJournal = () => {
     setPostData(values => ({...values, [name]: value}))
   }
 
-
   return (
     <Wrapper>
       <NewSidebar/>
       <Right>
         <NewNavBar/>
         <Form onSubmit={(e) => handleSubmit(e)}>
-          <Input name={"input"} onChange={(e) => handleChange(e)}/>
-          <Submit onClick={handleSubmit}>Add to today's journal! </Submit>
+          <Input name={"task"} onChange={(e) => handleChange(e)}/>
+          <Submit type="Submit">Add to the BrainDump! </Submit>
         </Form>
       </Right>
     </Wrapper>
   )
 }
 
-export default NewJournal
+export default NewBrainer
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   margin: 30px;
-
 `
 
 const Right = styled.div`
@@ -81,7 +76,6 @@ const Input = styled.textarea`
   height: 25vh;
   width: 560px;
   justify-content: flex-start;
-  align-items: flex-start;
   margin: 30px;
 `;
 

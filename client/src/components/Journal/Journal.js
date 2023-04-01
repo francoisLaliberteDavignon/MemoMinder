@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import BrainDump from './BrainDump'
-import DailyEntries from "./DailyEntriesjs"
 import SideLog from "./SideLog"
+import DailyEntries from "./DailyEntries"
 
 const Journal = () => {
   return (

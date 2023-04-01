@@ -130,7 +130,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.125em;
   }
 
-  .calendar button {
+  .calendar > button {
     background-color: white;
     border: none
 

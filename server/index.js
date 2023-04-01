@@ -11,7 +11,9 @@ const {
   getBrainDump,
   postNewBrainer,
   getJournalEntries,
-  postNewJournalEntry
+  postNewJournalEntry,
+  getAffirmations,
+  postNewAffirmation
 } = require('./handlers');
 
 express()
@@ -29,8 +31,11 @@ express()
   .get('/getBrainDump', getBrainDump)
   .post('/newBrainer', postNewBrainer)
 
-  .get('/journalEntries', getJournalEntries)
+  .get('/journalEntries/:date', getJournalEntries)
   .post('/newJournalEntry', postNewJournalEntry)
+
+  .get('/affirmations', getAffirmations)
+  .post('/newAffirmation', postNewAffirmation)
 
   // ---------------------------------
   // Nothing to modify below this line

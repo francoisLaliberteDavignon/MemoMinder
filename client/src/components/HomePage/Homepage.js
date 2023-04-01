@@ -4,22 +4,20 @@ import Header from "../HomePage/Header"
 import Calendrier from "./Calendar"
 import Sidebar from './Sidebar'
 
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { DateContext } from "../../DateContext"
 import { useNavigate } from "react-router-dom"
 
 const Homepage = () => {
 
   const navigate = useNavigate()
-  const { date, setDate, paramsToday, today, setToday } = useContext(DateContext)
-  
-  let  paramsDate = ""
-  if (date) {
-    paramsDate = date.toISOString().substring(0, 10)
-  }
+  const { paramsToday, today, setToday } = useContext(DateContext)
+
+
+  let paramsDate;
   
   const handleClickDay = (e) => {
-    setDate(e)
+    paramsDate = (e.toISOString().substring(0, 10))
     navigate(`/journal/${paramsDate}`)
   }
 

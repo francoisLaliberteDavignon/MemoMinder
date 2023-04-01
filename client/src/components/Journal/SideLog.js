@@ -12,7 +12,7 @@ const SideLog = () => {
       <Weather/>
       <HabitLog/>
       <DailySpread/>
-      <NavBack to={'/homepage'}>Hello</NavBack>
+      <NavBack to={'/homepage'}>Back to homepage!</NavBack>
     </Wrapper>
   )
 }

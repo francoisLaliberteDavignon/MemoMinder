@@ -91,7 +91,7 @@ const postNewBrainer = async (req, res) => {
 
 	const brainer = {
     _id: uuidv4(),
-		dateOfEntry: new Date().toISOString(),
+		dateOfEntry: new Date().toISOString().substring(0, 10),
   ...req.body	
 	}
 
@@ -115,15 +115,17 @@ const postNewBrainer = async (req, res) => {
 
 const getJournalEntries = async (req, res) => {
 
+	const paramsDate = req.params;
+
   try {
     const client = new MongoClient(MONGO_URI, options)
     await client.connect()
     const db = client.db('MemoMinder')
   
-    const Journal = await db.collection('journalEntries').find().toArray()	
-		Journal ?
-			res.status(200).json({status:200, message: "Here are all the journal entries", data: Journal}) :
-			res.status(400).json({status:400, message: "Could'nt find the journl", data: Journal})
+    const journal = await db.collection('journalEntries').find({dateOfEntry: paramsDate.date}).toArray()	
+		journal ?
+			res.status(200).json({status:200, message: `Here are all the journal entries from ${paramsDate.date}`, data: journal}) :
+			res.status(400).json({status:400, message: "Could'nt find the journal", data: journal})
 		client.close()
   } catch (error) {
 		res.status(500).json({status:500, message: "something went wrong!"})
@@ -137,11 +139,9 @@ const postNewJournalEntry = async (req, res) => {
 
 	const journalEntry = {
     _id: uuidv4(),
-		dateOfEntry: new Date().toISOString(),
+		dateOfEntry: new Date().toISOString().substring(0, 10),
   ...req.body	
 	}
-
-	console.log(journalEntry)
 
   try {
     const client = new MongoClient(MONGO_URI, options)
@@ -150,7 +150,7 @@ const postNewJournalEntry = async (req, res) => {
   
     const newJournalEntry = await db.collection('journalEntries').insertOne(journalEntry)	
 		newJournalEntry ?
-			res.status(200).json({status:200, message: "journal entry added to the braindump", data: journalEntry}) :
+			res.status(200).json({status:200, message: "journal entry added", data: journalEntry}) :
 			res.status(400).json({status:400, message: "'Was an error with the brainer", data: journalEntry})
 		client.close()
   } catch (error) {
@@ -158,11 +158,64 @@ const postNewJournalEntry = async (req, res) => {
 		client.close()
 	}
 }
+
+/***********************************************************************/
+
+const getAffirmations = async (req, res) => {
+
+	const paramsDate = req.params;
+
+  try {
+    const client = new MongoClient(MONGO_URI, options)
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const affirmations = await db.collection('affirmations').find().toArray()	
+		affirmations ?
+			res.status(200).json({status:200, message: `Here are all the affirmations`, data: affirmations}) :
+			res.status(400).json({status:400, message: "Could'nt find the journal", data: affirmations})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!"})
+		client.close()
+	}
+}
+
+/***********************************************************************/
+
+const postNewAffirmation = async (req, res) => {
+
+	const affirmation = {
+    _id: uuidv4(),
+		dateOfEntry: new Date().toISOString().substring(0, 10),
+  ...req.body	
+	}
+
+	console.log(affirmation)
+
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const newAffirmation = await db.collection('affirmations').insertOne(affirmation)	
+		newAffirmation ?
+			res.status(200).json({status:200, message: "Affirmation added!", data: affirmation}) :
+			res.status(400).json({status:400, message: "'Was an error with adding the affirmation", data: newAffirmation})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!", data: error.stack})
+		client.close()
+	}
+}
+
 module.exports = { 
 	postNewUser, 
 	postNewEntry, 
 	postNewBrainer, 
 	getBrainDump, 
 	getJournalEntries, 
-	postNewJournalEntry 
+	postNewJournalEntry,
+	getAffirmations,
+  postNewAffirmation
 }

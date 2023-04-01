@@ -31,10 +31,9 @@ export default BrainDump
 
 const Wrapper = styled.div`
   width: 700px;
+  padding: 25px;
   height: 50%;
   border: 1px solid gray;
   border-radius: 15px;
   display: flex;
-  justify-content: center;
-  align-items: center;
 `
