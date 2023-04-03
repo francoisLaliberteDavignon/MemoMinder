@@ -122,7 +122,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
   }
 
-  .calendar {
+  /* .calendar {
     max-width: 100%;
     background-color: #fff;
     color: #222;
@@ -130,15 +130,13 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.125em;
   }
 
-  .calendar > button {
+  .calendar button {
     background-color: white;
-    border: none
-
   }
 
   .calendar p {
     background-color: #444444;
-  }
+  } */
 `;
 
 export default GlobalStyles;
