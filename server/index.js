@@ -10,10 +10,13 @@ const {
   postNewEntry,
   getBrainDump,
   postNewBrainer,
+  patchBrainer,
   getJournalEntries,
   postNewJournalEntry,
   getAffirmations,
-  postNewAffirmation
+  postNewAffirmation,
+  getEvents,
+  postNewEvent
 } = require('./handlers');
 
 express()
@@ -30,12 +33,16 @@ express()
 
   .get('/getBrainDump', getBrainDump)
   .post('/newBrainer', postNewBrainer)
+  .patch('/patchBrainer', patchBrainer)
 
   .get('/journalEntries/:date', getJournalEntries)
   .post('/newJournalEntry', postNewJournalEntry)
 
   .get('/affirmations', getAffirmations)
   .post('/newAffirmation', postNewAffirmation)
+
+  .get('/getEvents', getEvents)
+  .post('/newEvent', postNewEvent)
 
   // ---------------------------------
   // Nothing to modify below this line

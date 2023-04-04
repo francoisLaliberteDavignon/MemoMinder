@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { DateContext } from "../../DateContext"
+import { GiFeather } from 'react-icons/gi'
+import { TbScribble } from 'react-icons/tb'
 
 const NewSidebar = () => {
 
@@ -9,9 +11,16 @@ const NewSidebar = () => {
 
   return (
     <Wrapper>
-      <Nav to={'/homepage'}>Back to homepage</Nav>
-      <Nav to={`/journal/${paramsToday}`}>Go to today's journal</Nav>
-      <Nav >Logo here!</Nav>
+      <Nav 
+        to={'/homepage'} 
+        className="navigation">Back to homepage</Nav>
+      <Nav 
+        to={`/journal/${paramsToday}`} 
+        className="navigation">Go to today's journal</Nav>
+      <div>
+        <Logo >Logo here!</Logo>
+        <Scribble/>
+      </div>
     </Wrapper>
   )
 }
@@ -30,7 +39,7 @@ const Wrapper = styled.div`
 `
 
 const Nav = styled(Link)`
-text-align: center;
+  text-align: center;
   border: 1px solid lightgray;
   border-radius: 15px;
   height: 123px;
@@ -39,3 +48,17 @@ text-align: center;
   justify-content: center;
   align-items: center;
 `
+
+const Logo = styled(GiFeather)`
+  height: 110px;
+  width: 110px;
+  transform: rotate(-25deg);
+`
+
+const Scribble = styled(TbScribble)`
+  position: relative;
+  height: 25px;
+  width: 25px;
+  left: -70px;
+  top: 35px
+` 

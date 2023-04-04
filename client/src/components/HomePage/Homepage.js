@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   display:flex;
   justify-content: flex-start;
   flex-direction: column;
-  height: auto;
+  height: 650px;
   margin: 30px;
 `
 const Main = styled.div`

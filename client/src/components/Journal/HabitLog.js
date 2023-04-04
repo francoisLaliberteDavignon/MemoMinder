@@ -10,7 +10,7 @@ const HabitLog = () => {
 export default HabitLog
 
 const Wrapper = styled.div`
-  width: 150px;
+  width: auto;
   height: 150px;
   border-bottom: 1px solid lightgray;
   display: flex;

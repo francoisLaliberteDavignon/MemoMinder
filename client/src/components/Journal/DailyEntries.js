@@ -34,7 +34,7 @@ export default DailyEntries
 
 
 const Wrapper = styled.div`
-  width: 700px;
+  width: 600px;
   padding: 25px;
   height: 50%;
   border: 1px solid gray;

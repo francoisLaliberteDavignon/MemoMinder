@@ -50,8 +50,8 @@ const postNewEntry = async (req, res) => {
   ...req.body	
 	}
 
+	const client = new MongoClient(MONGO_URI, options)
   try {
-    const client = new MongoClient(MONGO_URI, options)
     await client.connect()
     const db = client.db('MemoMinder')
   
@@ -70,8 +70,8 @@ const postNewEntry = async (req, res) => {
 
 const getBrainDump = async (req, res) => {
 
+	const client = new MongoClient(MONGO_URI, options)
   try {
-    const client = new MongoClient(MONGO_URI, options)
     await client.connect()
     const db = client.db('MemoMinder')
   
@@ -95,8 +95,8 @@ const postNewBrainer = async (req, res) => {
   ...req.body	
 	}
 
+	const client = new MongoClient(MONGO_URI, options)
   try {
-    const client = new MongoClient(MONGO_URI, options)
     await client.connect()
     const db = client.db('MemoMinder')
   
@@ -104,6 +104,37 @@ const postNewBrainer = async (req, res) => {
 		insertBrainer ?
 			res.status(200).json({status:200, message: "brainer added to the braindump", data: brainer}) :
 			res.status(400).json({status:400, message: "'Was an error with the brainer", data: brainer})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!"})
+		client.close()
+	}
+}
+
+/***********************************************************************/
+
+const patchBrainer = async (req, res) => {
+
+	const _id = req.body._id;
+
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const updateBrainer = await db.collection('brainers').findOne({_id: _id})	
+		if (updateBrainer) {
+
+			const query = {_id: _id}
+			const update = { $set: { isImportant : !updateBrainer.isImportant}}
+
+			const updated = await db.collection('brainers').updateOne(query, update)
+			console.log(updated)
+
+			res.status(200).json({status:200, message: "brainer was changed", updated})
+		} else {
+			res.status(400).json({status:400, message: "'Was an error with the brainer"})
+		}
 		client.close()
   } catch (error) {
 		res.status(500).json({status:500, message: "something went wrong!"})
@@ -207,15 +238,65 @@ const postNewAffirmation = async (req, res) => {
 		res.status(500).json({status:500, message: "something went wrong!", data: error.stack})
 		client.close()
 	}
+
+}
+
+/***********************************************************************/
+
+const getEvents = async (req, res) => {
+
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const events = await db.collection('events').find().toArray()	
+		events ?
+			res.status(200).json({status:200, message: `Here are all the events`, data: events}) :
+			res.status(400).json({status:400, message: "Nothing here...", data: req.query})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!"})
+		client.close()
+	}
+}
+
+/***********************************************************************/
+
+const postNewEvent = async (req, res) => {
+
+	const newEvent = {
+    _id: uuidv4(),
+		dateOfEntry: new Date().toISOString().substring(0, 10),
+  ...req.body	
+	}
+
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const event = await db.collection('events').insertOne(newEvent)	
+		event ?
+			res.status(200).json({status:200, message: "New event added", data: newEvent}) :
+			res.status(400).json({status:400, message: "T'was an error", data: newEvent})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!", error: error.stack})
+		client.close()
+	}
 }
 
 module.exports = { 
 	postNewUser, 
 	postNewEntry, 
-	postNewBrainer, 
+	postNewBrainer,
+	patchBrainer, 
 	getBrainDump, 
 	getJournalEntries, 
 	postNewJournalEntry,
 	getAffirmations,
-  postNewAffirmation
+  postNewAffirmation,
+	getEvents,
+	postNewEvent
 }

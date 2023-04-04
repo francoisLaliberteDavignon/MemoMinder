@@ -22,11 +22,13 @@ export default SideLog
 const Wrapper = styled.div`
   border: 1px solid gray;
   border-radius: 15px;
-  height: 90vh;
-  width: 150px;
+  height: 650px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+
 `
 
 const NavBack = styled(Link)`
@@ -35,4 +37,5 @@ const NavBack = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
 `

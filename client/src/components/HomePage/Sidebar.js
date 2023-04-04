@@ -6,12 +6,11 @@ const Sidebar = () => {
 
   return (
     <Wrapper>
-      <p>Add some stuff!</p>
-      <Nav to={'/new/journalEntry'}>New journal log</Nav>
-      <Nav to={'/new/brainer'}>New brainer</Nav>
-      <Nav to={'/new/event'}>New event</Nav>
-      <Nav to={'/new/affirmation'}>New affirmation</Nav>
-      <Nav to={'/new/habitLog'}>New habit log</Nav>
+      <Nav to={'/new/journalEntry'} className="navigation">New journal log</Nav>
+      <Nav to={'/new/brainer'} className="navigation">New brainer</Nav>
+      <Nav to={'/new/event'} className="navigation">New event</Nav>
+      <Nav to={'/new/affirmation'} className="navigation">New affirmation</Nav>
+      <Nav to={'/new/habitLog'} className="navigation">New habit log</Nav>
     </Wrapper>
   )
 }
@@ -21,7 +20,7 @@ export default Sidebar
 const Wrapper = styled.div`
   border: 1px solid gray;
   border-radius: 15px;
-  height: 60vh;
+  height: 460px;
   width: 150px;
   display: flex;
   justify-content: space-around;
@@ -30,5 +29,13 @@ const Wrapper = styled.div`
 `
 
 const Nav = styled(Link)`
-
+  text-align: center;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 15px;
+  height: 75px;
+  width: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

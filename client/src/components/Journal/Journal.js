@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   margin: 30px;
-
+  height: 650px;
 `
 const Left = styled.div`
   display: flex;

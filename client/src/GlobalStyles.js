@@ -1,13 +1,17 @@
 import { createGlobalStyle } from "styled-components";
+import "@fontsource/lexend-mega"
 
 const GlobalStyles = createGlobalStyle`
 
   :root {
-    --color-main-background: #fff;
-    --color-secondary: #edf0f2;
-    --color-accent: powderblue;
-    --font-heading: 'Ubuntu', Arial, Helvetica, sans-serif;
-    --font-body: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    --color-main-background: #FFF0B1;
+    --color-secondary: #00F0B1;
+    --color-accent: #1E9E6C;
+    --color-gray: #C1CCCC;
+    --color-orange: #EBB126;
+    --color-pink: #FFE1F0;
+    --font-heading: "Lexend Mega", sans-serif;
+    --font-body: 'PublicSansRegular';
   }
 
   /* Reset styles */
@@ -21,15 +25,18 @@ const GlobalStyles = createGlobalStyle`
 
   /* Set default font family, size, and line height */
   body {
+    background-color: var(--color-main-background);
+    margin: 25px;
+    display: flex;
+    justify-content: center;
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.5;
   }
 
-  /* Set background color for entire page */
-  body {
+  .Wrapper {
     background-color: var(--color-main-background);
-    margin: 25px auto;
+    border: 5px solid #3DEBAC
   }
 
   /* Headings */
@@ -84,7 +91,7 @@ const GlobalStyles = createGlobalStyle`
 
   /* Buttons */
   button {
-    background-color: var(--color-accent);
+    background-color: var(--color-pink);
     border-radius: 15px;
     color: black;
     cursor: pointer;
@@ -93,18 +100,31 @@ const GlobalStyles = createGlobalStyle`
     padding: 10px 40px;
     transition: all 0.3s ease;
     border: 1px lightgray solid;
+    &:hover {
+      background-color: var(--color-transition);
+    }
   }
-
-  button:hover {
-    background-color: #d4ff8a;
-  }
-
   /* Navigation */
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
+  }
+
+  .navigation {
+    background-color: var(--color-pink);
+    font-family: var(--font-heading);
+    font-size: 13px;
+      &:hover{
+      overflow: hidden;
+      box-shadow:   16px -16px lightseagreen;
+      outline: 3px solid goldenrod ;
+    }
+  &.active{
+      box-shadow:   16px -16px teal;
+      outline: 3px solid goldenrod ;
+    }
   }
 
   nav ul {
@@ -122,17 +142,59 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
   }
 
+  // Forms and submissions
+
+  label {
+    font-family: var(--font-heading);
+    padding-right: 20px;
+  }
+
+  input {
+    &:focus{
+    outline: none;
+    }
+  }
+
+  input[type=checkbox] {
+    width: 45px;
+    height: 15px;
+    background: #555;
+    position: relative;
+    border-radius: 5px;
+    
+  }
+
+  textarea {
+    &:focus{
+    outline: none;
+    }
+  }
+
+  .icon {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  .icon :hover {
+    background-color: lightgray;
+    border-radius: 50%;
+  }
+
+  // calendar
   .calendar {
     max-width: 100%;
-    background-color: #fff;
+    background-color: var(--color-gray);
     color: #222;
     border-radius: 8px;
     line-height: 1.125em;
+    border: none;
+    &:hover{
+      background-color: var(--color-pink);
+    }
   }
 
-  .calendar > button {
-    background-color: white;
-    border: none
+  .calendar button {
+    border: none;
 
   }
 

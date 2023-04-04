@@ -19,7 +19,7 @@ const BrainDump = () => {
     {brainDump.length === 0 ? <>loading</>:  
     <ul>
       {brainDump.map((brainer) => {
-        return <Brainer brainer={brainer}/>
+        return <Brainer brainer={brainer} key={brainer._id}/>
       })}
     </ul>}
     </Wrapper>
@@ -30,7 +30,8 @@ export default BrainDump
 
 
 const Wrapper = styled.div`
-  width: 700px;
+  overflow-y: auto;
+  width: 600px;
   padding: 25px;
   height: 50%;
   border: 1px solid gray;

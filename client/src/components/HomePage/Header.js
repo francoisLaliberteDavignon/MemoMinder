@@ -40,4 +40,10 @@ const Wrapper = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: 150ms;
+  &:hover{
+    background-color: lightseagreen;
+    color: white;
+    /* transform: scale(0.9); */
+  }
 `

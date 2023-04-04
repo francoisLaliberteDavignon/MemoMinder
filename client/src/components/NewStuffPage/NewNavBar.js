@@ -5,15 +5,13 @@ import { NavLink } from "react-router-dom"
 const NewNavBar = () => {
   return (
     <Wrapper>
-      <p>New entry</p>
       <Navigation>
-        <Nav to={'/new/journalEntry'} className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "active" : ""
-  }>New journal log</Nav>
-        <Nav to={'/new/brainer'}>New brainer</Nav>
-        <Nav to={'/new/event'}>New event</Nav>
-        <Nav to={'/new/affirmation'}>New affirmation</Nav>
-        <Nav to={'/new/habitLog'}>New habit log</Nav>
+        <Nav to={'/new/journalEntry'} className="navigation">
+  New journal log</Nav>
+        <Nav to={'/new/brainer'} className="navigation">New brainer</Nav>
+        <Nav to={'/new/event'} className="navigation">New event</Nav>
+        <Nav to={'/new/affirmation'} className="navigation">New affirmation</Nav>
+        <Nav to={'/new/habitLog'} className="navigation">New habit log</Nav>
       </Navigation>
     </Wrapper>
   )
@@ -46,13 +44,5 @@ const Nav = styled(NavLink)`
   justify-content: center;
   align-items: center;
   padding: 15px;
-  &:hover{
-    border-bottom:  2px solid black;
-    overflow: hidden;
-  }
-  &.active{
-    border-bottom:  2px solid black;
-
-  }
 
 `

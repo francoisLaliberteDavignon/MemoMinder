@@ -8,5 +8,6 @@ const Entry = ({entry}) => {
 
 export default Entry
 
-const Item = styled.li`
+const Item = styled.p`
+  padding-bottom: 10px
 `

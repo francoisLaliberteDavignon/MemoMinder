@@ -7,9 +7,13 @@ import NewNavBar from './NewNavBar'
 const NewJournal = () => {
 
   const [ postData, setPostData ] = useState(null)
+  const [inputValue, setInputValue] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setIsSubmitting(true);
 
     fetch("/newJournalEntry", {
       method: "POST",
@@ -24,9 +28,12 @@ const NewJournal = () => {
     .then((res) => res.json())
     .then(parsedData => {
       console.log(parsedData)
+      setIsSubmitting(false);
+      setInputValue('');
     })
     .catch((error) => {
       console.log(error)
+      setIsSubmitting(false);
     });
     
   }
@@ -35,6 +42,7 @@ const NewJournal = () => {
     const name = e.target.name;
     const value = e.target.value;
     setPostData(values => ({...values, [name]: value}))
+    setInputValue(value);
   }
 
 
@@ -44,8 +52,17 @@ const NewJournal = () => {
       <Right>
         <NewNavBar/>
         <Form onSubmit={(e) => handleSubmit(e)}>
-          <Input name={"input"} onChange={(e) => handleChange(e)}/>
-          <Submit onClick={handleSubmit}>Add to today's journal! </Submit>
+          <Input 
+            placeholder="Add a new journal entry..." 
+            name={"input"} 
+            onChange={(e) => handleChange(e)}
+            value={inputValue}
+          />
+          <Submit 
+            disabled={isSubmitting || inputValue.trim() === ''} 
+            onClick={handleSubmit}
+          >{isSubmitting ? 'Adding...' : 'Add to today\'s journal!'}
+          </Submit>
         </Form>
       </Right>
     </Wrapper>
@@ -83,6 +100,7 @@ const Input = styled.textarea`
   justify-content: flex-start;
   align-items: flex-start;
   margin: 30px;
+
 `;
 
 const Submit = styled.button`

@@ -1,4 +1,3 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import GlobalStyles from "./GlobalStyles";
