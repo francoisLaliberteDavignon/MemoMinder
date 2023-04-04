@@ -8,7 +8,7 @@ import Journal from "./components/Journal/Journal";
 
 import NewJournal from "./components/NewStuffPage/NewJournal";
 import NewBrainer from "./components/NewStuffPage/NewBrainer";
-import NewEvent from "./components/NewStuffPage/NewEvent";
+import NewReminder from "./components/NewStuffPage/NewReminder";
 import NewAffirmation from "./components/NewStuffPage/NewAffirmation";
 import NewHabitLog from "./components/NewStuffPage/NewHabitLog";
 
@@ -24,7 +24,7 @@ const App = () => {
 
         <Route path='/new/journalEntry' element={<NewJournal/>}/>
         <Route path='/new/brainer' element={<NewBrainer/>}/>
-        <Route path='/new/event' element={<NewEvent/>}/>
+        <Route path='/new/reminder' element={<NewReminder/>}/>
         <Route path='/new/affirmation' element={<NewAffirmation/>}/>
         <Route path='/new/habitLog' element={<NewHabitLog/>}/>
       </Routes>

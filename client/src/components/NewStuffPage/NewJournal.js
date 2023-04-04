@@ -27,7 +27,6 @@ const NewJournal = () => {
     })
     .then((res) => res.json())
     .then(parsedData => {
-      console.log(parsedData)
       setIsSubmitting(false);
       setInputValue('');
     })

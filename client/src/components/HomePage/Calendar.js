@@ -6,25 +6,21 @@ import 'react-calendar/dist/Calendar.css';
 
 const Calendrier = ({handleClickDay}) => {
 
-  const [events, setNewEvents] = useState([])
+  const [reminders, setNewReminders] = useState([])
 
   useEffect(() => {
-    fetch('/getEvents')
+    fetch('/getReminders')
     .then(res => res.json())
     .then((parsedData) => {
-      setNewEvents(parsedData.data)
-      console.log(parsedData.data)
+      setNewReminders(parsedData.data)
     })
     .catch(error => console.log(error.stack))
   }, [])
 
-  console.log(events)
-
-
   const tileContent = ({date, view}) => {
     if (view === 'month') {
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
-      if (events.find(event => isSameDay(new Date(event.start), date))) {
+      if (reminders.find(reminder => isSameDay(new Date(reminder.start), date))) {
         return 'styledDate';
       }
     }

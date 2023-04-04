@@ -40,10 +40,9 @@ const Greetings = () => {
     <>
       {!currentUser ? <Greeting>Loading</Greeting> :
       <Greeting>
-        <p>Homepage</p>
         <p>{currentUser.nickname}</p>
         <ProfilePic src={currentUser.picture}/> 
-        <button onClick={() => handleLogOut()}>Logout</button>
+        <Logout onClick={() => handleLogOut()}>Logout</Logout>
       </Greeting>
       }
     </>
@@ -64,6 +63,13 @@ const ProfilePic = styled.img`
   height: 100px;
   width: 100px;
   border-radius: 50%;
+`
+
+const Logout = styled.button`
+  &:hover{
+    box-shadow: 14px 14px var(--color-green);
+    outline: 3px solid goldenrod
+  }
 `
 
 export default Greetings

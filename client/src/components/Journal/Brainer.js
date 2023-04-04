@@ -32,7 +32,7 @@ const Brainer = ({brainer}) => {
   }
 
   const handleNavigate = () => {
-    navigate(`/new/event/`)
+    navigate(`/new/reminder/`)
   }
 
   return (
@@ -59,8 +59,8 @@ export default Brainer
 const Item = styled.div`
   border: 1px solid lightgray;
   border-radius: 15px;
-  margin: 15px 0;
-  padding: 15px;
+  margin: 10px 0;
+  padding: 5px 15px;
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -31,7 +31,7 @@ const entries = [
 
 // formatted for react-big-calendar ? or full-calendar
 
-const events = [
+const reminders = [
   {
     _id: "id",
     user: user,
@@ -91,7 +91,7 @@ const brainers = [
       user: user,
       isAssigned: true,
       dateAssigned: "timeStamp",
-      type : "event",
+      type : "reminder",
       task: "change water"
       //flag ? some kind of icon to note the state of the brainDump entry
     }

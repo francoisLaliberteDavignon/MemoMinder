@@ -31,8 +31,10 @@ export default BrainDump
 
 const Wrapper = styled.div`
   overflow-y: auto;
+  overflow-x: none;
   width: 600px;
   padding: 25px;
+  padding-top: 10px;
   height: 50%;
   border: 1px solid gray;
   border-radius: 15px;

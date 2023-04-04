@@ -9,7 +9,7 @@ const NewNavBar = () => {
         <Nav to={'/new/journalEntry'} className="navigation">
   New journal log</Nav>
         <Nav to={'/new/brainer'} className="navigation">New brainer</Nav>
-        <Nav to={'/new/event'} className="navigation">New event</Nav>
+        <Nav to={'/new/reminder'} className="navigation">New reminder</Nav>
         <Nav to={'/new/affirmation'} className="navigation">New affirmation</Nav>
         <Nav to={'/new/habitLog'} className="navigation">New habit log</Nav>
       </Navigation>

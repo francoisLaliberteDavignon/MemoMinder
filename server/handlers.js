@@ -129,8 +129,6 @@ const patchBrainer = async (req, res) => {
 			const update = { $set: { isImportant : !updateBrainer.isImportant}}
 
 			const updated = await db.collection('brainers').updateOne(query, update)
-			console.log(updated)
-
 			res.status(200).json({status:200, message: "brainer was changed", updated})
 		} else {
 			res.status(400).json({status:400, message: "'Was an error with the brainer"})
@@ -194,8 +192,6 @@ const postNewJournalEntry = async (req, res) => {
 
 const getAffirmations = async (req, res) => {
 
-	const paramsDate = req.params;
-
   try {
     const client = new MongoClient(MONGO_URI, options)
     await client.connect()
@@ -222,8 +218,6 @@ const postNewAffirmation = async (req, res) => {
   ...req.body	
 	}
 
-	console.log(affirmation)
-
 	const client = new MongoClient(MONGO_URI, options)
   try {
     await client.connect()
@@ -243,16 +237,16 @@ const postNewAffirmation = async (req, res) => {
 
 /***********************************************************************/
 
-const getEvents = async (req, res) => {
+const getReminders = async (req, res) => {
 
 	const client = new MongoClient(MONGO_URI, options)
   try {
     await client.connect()
     const db = client.db('MemoMinder')
   
-    const events = await db.collection('events').find().toArray()	
-		events ?
-			res.status(200).json({status:200, message: `Here are all the events`, data: events}) :
+    const reminders = await db.collection('reminders').find().toArray()	
+		reminders ?
+			res.status(200).json({status:200, message: `Here are all the reminders`, data: reminders}) :
 			res.status(400).json({status:400, message: "Nothing here...", data: req.query})
 		client.close()
   } catch (error) {
@@ -263,9 +257,31 @@ const getEvents = async (req, res) => {
 
 /***********************************************************************/
 
-const postNewEvent = async (req, res) => {
+const getRemindersByDate = async (req, res) => {
 
-	const newEvent = {
+	const { date } = req.params
+	
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const reminders = await db.collection('reminders').find({start: date}).toArray()
+		reminders ?
+			res.status(200).json({status:200, message: `Here are all the reminders for this date!`, data: reminders}) :
+			res.status(400).json({status:400, message: "Nothing here..."})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!"})
+		client.close()
+	}
+}
+
+/***********************************************************************/
+
+const postNewReminder = async (req, res) => {
+
+	const newReminder = {
     _id: uuidv4(),
 		dateOfEntry: new Date().toISOString().substring(0, 10),
   ...req.body	
@@ -276,10 +292,10 @@ const postNewEvent = async (req, res) => {
     await client.connect()
     const db = client.db('MemoMinder')
   
-    const event = await db.collection('events').insertOne(newEvent)	
-		event ?
-			res.status(200).json({status:200, message: "New event added", data: newEvent}) :
-			res.status(400).json({status:400, message: "T'was an error", data: newEvent})
+    const reminder = await db.collection('reminders').insertOne(newReminder)	
+		reminder ?
+			res.status(200).json({status:200, message: "New reminder added", data: newReminder}) :
+			res.status(400).json({status:400, message: "T'was an error", data: req.body})
 		client.close()
   } catch (error) {
 		res.status(500).json({status:500, message: "something went wrong!", error: error.stack})
@@ -297,6 +313,7 @@ module.exports = {
 	postNewJournalEntry,
 	getAffirmations,
   postNewAffirmation,
-	getEvents,
-	postNewEvent
+	getReminders,
+	getRemindersByDate,
+	postNewReminder
 }

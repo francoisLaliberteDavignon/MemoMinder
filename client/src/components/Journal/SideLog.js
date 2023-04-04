@@ -12,7 +12,7 @@ const SideLog = () => {
       <Weather/>
       <HabitLog/>
       <DailySpread/>
-      <NavBack to={'/homepage'}>Back to homepage!</NavBack>
+      <NavBack to={'/homepage'} className="navigation">Back to homepage!</NavBack>
     </Wrapper>
   )
 }
@@ -26,8 +26,7 @@ const Wrapper = styled.div`
   width: 250px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-
+  justify-content: space-between;
 
 `
 

@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import NewSidebar from "./NewSidebar"
 import NewNavBar from './NewNavBar'
 
-const NewEvent = () => {
+const NewReminder = () => {
 
   const [ postData, setPostData ] = useState(null)
   const [inputValue, setInputValue] = useState('');
@@ -20,7 +20,7 @@ const NewEvent = () => {
 
     setIsSubmitting(true);
 
-    fetch("/newEvent", {
+    fetch("/newReminder", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -34,7 +34,6 @@ const NewEvent = () => {
     .then(parsedData => {
       setIsSubmitting(false);
       setInputValue('');
-      console.log(parsedData.data)
     })
     .catch((error) => {
       console.log(error)
@@ -69,7 +68,6 @@ const NewEvent = () => {
     }))
     
   }
-  console.log(postData)
   return (
     <Wrapper>
       <NewSidebar/>
@@ -102,7 +100,7 @@ const NewEvent = () => {
   )
 }
 
-export default NewEvent
+export default NewReminder
 
 const Wrapper = styled.div`
   display: flex;

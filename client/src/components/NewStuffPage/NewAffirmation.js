@@ -22,7 +22,6 @@ const NewAffirmation = () => {
     })
     .then((res) => res.json())
     .then(parsedData => {
-      console.log(parsedData)
     })
     .catch((error) => {
       console.log(error)
@@ -33,8 +32,6 @@ const NewAffirmation = () => {
     const name = e.target.name;
     const value = e.target.value;
     setPostData(values => ({...values, [name]: value}))
-    console.log(postData)
-
   }
 
 

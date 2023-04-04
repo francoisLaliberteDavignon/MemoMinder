@@ -15,8 +15,9 @@ const {
   postNewJournalEntry,
   getAffirmations,
   postNewAffirmation,
-  getEvents,
-  postNewEvent
+  getReminders,
+  getRemindersByDate,
+  postNewReminder
 } = require('./handlers');
 
 express()
@@ -41,8 +42,9 @@ express()
   .get('/affirmations', getAffirmations)
   .post('/newAffirmation', postNewAffirmation)
 
-  .get('/getEvents', getEvents)
-  .post('/newEvent', postNewEvent)
+  .get('/getReminders', getReminders)
+  .get('/getReminders/:date', getRemindersByDate)
+  .post('/newReminder', postNewReminder)
 
   // ---------------------------------
   // Nothing to modify below this line

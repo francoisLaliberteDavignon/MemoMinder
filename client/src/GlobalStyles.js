@@ -5,8 +5,8 @@ const GlobalStyles = createGlobalStyle`
 
   :root {
     --color-main-background: #FFF0B1;
-    --color-secondary: #00F0B1;
-    --color-accent: #1E9E6C;
+    --color-border: #00F0B1;
+    --color-green: #1E9E6C;
     --color-gray: #C1CCCC;
     --color-orange: #EBB126;
     --color-pink: #FFE1F0;
@@ -26,7 +26,6 @@ const GlobalStyles = createGlobalStyle`
   /* Set default font family, size, and line height */
   body {
     background-color: var(--color-main-background);
-    margin: 25px;
     display: flex;
     justify-content: center;
     font-family: var(--font-body);
@@ -34,9 +33,10 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
   }
 
-  .Wrapper {
+  .wrapper {
     background-color: var(--color-main-background);
-    border: 5px solid #3DEBAC
+    border: 5px solid var(--color-border);
+
   }
 
   /* Headings */
@@ -49,6 +49,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-heading);
     font-weight: bold;
     line-height: 1.2;
+    text-align: center;
+    margin-top: 10px
   }
 
   h1 {
@@ -87,12 +89,15 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     font-size: 14px;
+    margin: 8px
   }
+
 
   /* Buttons */
   button {
     background-color: var(--color-pink);
     border-radius: 15px;
+  
     color: black;
     cursor: pointer;
     font-size: 12px;
@@ -101,7 +106,7 @@ const GlobalStyles = createGlobalStyle`
     transition: all 0.3s ease;
     border: 1px lightgray solid;
     &:hover {
-      background-color: var(--color-transition);
+      box-shadow:   16px -16px var(--color-green);
     }
   }
   /* Navigation */
@@ -113,16 +118,20 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .navigation {
+    border: 1px lightgray solid;
+    border-radius: 15px;
+    padding: 10px;
     background-color: var(--color-pink);
     font-family: var(--font-heading);
     font-size: 13px;
+    transition: all 0.3s ease;
+    text-align: center;
       &:hover{
       overflow: hidden;
-      box-shadow:   16px -16px lightseagreen;
-      outline: 3px solid goldenrod ;
+      box-shadow:   16px -16px var(--color-green);
     }
   &.active{
-      box-shadow:   16px -16px teal;
+      box-shadow:   16px -16px var(--color-green);
       outline: 3px solid goldenrod ;
     }
   }
@@ -165,6 +174,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   textarea {
+    font-family: var(--font-body);
     &:focus{
     outline: none;
     }
@@ -183,19 +193,20 @@ const GlobalStyles = createGlobalStyle`
   // calendar
   .calendar {
     max-width: 100%;
-    background-color: var(--color-gray);
+    font-size: 25px;
+    background-color: var(--color-pink);
     color: #222;
     border-radius: 8px;
     line-height: 1.125em;
     border: none;
-    &:hover{
-      background-color: var(--color-pink);
-    }
+
   }
 
   .calendar button {
-    border: none;
-
+    box-shadow: none;
+    &:hover{
+      background-color: var(--color-green);
+    }
   }
 
   .calendar p {

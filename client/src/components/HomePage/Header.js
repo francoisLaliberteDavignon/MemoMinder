@@ -1,8 +1,6 @@
 import { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { format } from 'date-fns'
-
 
 const Header = ({paramsToday}) => {
 
@@ -20,18 +18,20 @@ const Header = ({paramsToday}) => {
 
   return (
 
-    <Wrapper to={`/journal/${paramsToday}`}>
-      <p>View today's journal</p>
-      <p>{paramsToday}</p>
+    <Wrapper>
+      <Today className='navigation' to={`/journal/${paramsToday}`}>
+        <p>{paramsToday}</p>
+        <>View today's journal</>
+      </Today>
       {!randomAffirmation ? <p>fetching an affirmation</p> :
-      <p>{randomAffirmation.affirmation}</p>}
+      <h4>{randomAffirmation.affirmation}</h4>}
     </Wrapper>
   )
 }
 
 export default Header
 
-const Wrapper = styled(Link)`
+const Wrapper = styled.div`
   height: 190px;
   width: 625px;
   border: 1px solid gray;
@@ -41,9 +41,8 @@ const Wrapper = styled(Link)`
   justify-content: center;
   align-items: center;
   transition: 150ms;
-  &:hover{
-    background-color: lightseagreen;
-    color: white;
-    /* transform: scale(0.9); */
-  }
+`
+
+const Today = styled(Link)`
+
 `

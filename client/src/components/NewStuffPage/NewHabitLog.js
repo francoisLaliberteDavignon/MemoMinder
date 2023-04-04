@@ -17,7 +17,6 @@ const NewHabitLog = () => {
     const name = e.target.name;
     const value = e.target.value;
     setPostData(values => ({...values, [name]: value}))
-    console.log(postData)
   }
 
 
