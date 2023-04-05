@@ -4,12 +4,13 @@ import "@fontsource/lexend-mega"
 const GlobalStyles = createGlobalStyle`
 
   :root {
-    --color-main-background: #FFF0B1;
+    --color-sand: #FFF0B1;
     --color-border: #00F0B1;
     --color-green: #1E9E6C;
     --color-gray: #C1CCCC;
-    --color-orange: #EBB126;
+    --color-orange: #E27A21;
     --color-pink: #FFE1F0;
+
     --font-heading: "Lexend Mega", sans-serif;
     --font-body: 'PublicSansRegular';
   }
@@ -25,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
 
   /* Set default font family, size, and line height */
   body {
-    background-color: var(--color-main-background);
+    background-color: var(--color-green);
     display: flex;
     justify-content: center;
     font-family: var(--font-body);
@@ -34,9 +35,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .wrapper {
-    background-color: var(--color-main-background);
-    border: 5px solid var(--color-border);
-
+    background-color: var(--color-sand);
+    border: 6px solid var(--color-gray);
   }
 
   /* Headings */
@@ -92,23 +92,22 @@ const GlobalStyles = createGlobalStyle`
     margin: 8px
   }
 
-
   /* Buttons */
   button {
     background-color: var(--color-pink);
     border-radius: 15px;
-  
-    color: black;
     cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
+    color: black;
+    font-size: 13px;
+    font-family: var(--font-heading);
     padding: 10px 40px;
     transition: all 0.3s ease;
     border: 1px lightgray solid;
     &:hover {
-      box-shadow:   16px -16px var(--color-green);
+      box-shadow:16px -16px var(--color-orange);
     }
   }
+
   /* Navigation */
   nav {
     display: flex;
@@ -128,12 +127,20 @@ const GlobalStyles = createGlobalStyle`
     text-align: center;
       &:hover{
       overflow: hidden;
-      box-shadow:   16px -16px var(--color-green);
+      box-shadow:   16px -16px var(--color-orange);
     }
   &.active{
-      box-shadow:   16px -16px var(--color-green);
+      box-shadow:   16px -16px var(--color-orange);
       outline: 3px solid goldenrod ;
     }
+  }
+
+  .title-hovered {
+    text-decoration: line-through;
+  }
+
+  .task-deleted {
+    transform: translateX(-300%);
   }
 
   nav ul {
@@ -200,6 +207,10 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.125em;
     border: none;
 
+  }
+
+  .calendar .styledDate {
+    background-color: red;
   }
 
   .calendar button {

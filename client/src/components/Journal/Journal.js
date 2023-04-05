@@ -5,7 +5,7 @@ import DailyEntries from "./DailyEntries"
 
 const Journal = () => {
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <Left>
         <SideLog/>
       </Left>

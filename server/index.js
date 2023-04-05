@@ -11,13 +11,15 @@ const {
   getBrainDump,
   postNewBrainer,
   patchBrainer,
+  deleteBrainer,
   getJournalEntries,
   postNewJournalEntry,
   getAffirmations,
   postNewAffirmation,
   getReminders,
   getRemindersByDate,
-  postNewReminder
+  postNewReminder,
+  deleteReminder
 } = require('./handlers');
 
 express()
@@ -35,6 +37,7 @@ express()
   .get('/getBrainDump', getBrainDump)
   .post('/newBrainer', postNewBrainer)
   .patch('/patchBrainer', patchBrainer)
+  .delete('/delete/brainer/:_id', deleteBrainer)
 
   .get('/journalEntries/:date', getJournalEntries)
   .post('/newJournalEntry', postNewJournalEntry)
@@ -45,6 +48,7 @@ express()
   .get('/getReminders', getReminders)
   .get('/getReminders/:date', getRemindersByDate)
   .post('/newReminder', postNewReminder)
+  .delete('/delete/reminder/:_id', deleteReminder)
 
   // ---------------------------------
   // Nothing to modify below this line

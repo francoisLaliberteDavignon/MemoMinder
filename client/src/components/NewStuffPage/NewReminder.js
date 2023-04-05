@@ -69,11 +69,11 @@ const NewReminder = () => {
     
   }
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <NewSidebar/>
       <Right>
         <NewNavBar/>
-        <Form>
+        <Form className="wrapper">
           <div>
             <label htmlFor="title">Title</label>
             <Input 
@@ -117,8 +117,6 @@ const Right = styled.div`
 
 const Form = styled.form`
   display: flex;
-  border: 1px solid lightgray;
-  border-radius: 15px;
   height: 75vh;
   flex-direction: column;
   align-items: center;

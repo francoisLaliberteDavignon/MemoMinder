@@ -17,21 +17,22 @@ const Calendrier = ({handleClickDay}) => {
     .catch(error => console.log(error.stack))
   }, [])
 
-  const tileContent = ({date, view}) => {
+  const tileClassName = ({date, view}) => {
     if (view === 'month') {
-      // Check if a date React-Calendar wants to check is on the list of dates to add class to
-      if (reminders.find(reminder => isSameDay(new Date(reminder.start), date))) {
+      if (reminders.find(reminder => {
+        isSameDay(new Date(reminder.start), date)
+      })) {
         return 'styledDate';
       }
     }
   }
 
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <Container>
         <Planner 
           onClickDay={(e) => handleClickDay(e)}
-          tileContent={tileContent}
+          tileClassName={tileClassName}
           className="calendar"
         />
       </Container>
@@ -47,8 +48,7 @@ const Wrapper = styled.div`
   align-items: center;
   height: 460px;
   width: 700px;
-  border: 1px solid gray;
-  border-radius: 15px;
+
 `
 
 const Container = styled.div`

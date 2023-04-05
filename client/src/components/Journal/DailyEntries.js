@@ -19,7 +19,7 @@ const DailyEntries = () => {
   },[])
 
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
     {journalEntries.length === 0 ? <>No entry at this date</> :
     <ul>
 {    journalEntries.map((entry) => {
@@ -37,7 +37,6 @@ const Wrapper = styled.div`
   width: 600px;
   padding: 25px;
   height: 50%;
-  border: 1px solid gray;
-  border-radius: 15px;
   display: flex;
+  border-bottom: none;
 `

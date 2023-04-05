@@ -10,7 +10,7 @@ const NewSidebar = () => {
   const { paramsToday } = useContext(DateContext)
 
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <Nav 
         to={'/homepage'} 
         className="navigation">Back to homepage</Nav>
@@ -32,8 +32,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid lightgray;
-  border-radius: 15px;
+
   height: 90vh;
   width: 20%;
 `

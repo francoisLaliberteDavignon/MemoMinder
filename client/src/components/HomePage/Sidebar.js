@@ -5,7 +5,7 @@ const Sidebar = () => {
 
 
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <Nav to={'/new/journalEntry'} className="navigation">New journal log</Nav>
       <Nav to={'/new/brainer'} className="navigation">New brainer</Nav>
       <Nav to={'/new/reminder'} className="navigation">New reminder</Nav>
@@ -18,8 +18,6 @@ const Sidebar = () => {
 export default Sidebar
 
 const Wrapper = styled.div`
-  border: 1px solid gray;
-  border-radius: 15px;
   height: 460px;
   width: 150px;
   display: flex;

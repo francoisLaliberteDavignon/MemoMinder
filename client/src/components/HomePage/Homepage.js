@@ -22,7 +22,7 @@ const Homepage = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <Top>
         <Greetings/>
         <Header paramsToday={paramsToday}/>
@@ -39,6 +39,7 @@ export default Homepage
 
 const Wrapper = styled.div`
   display:flex;
+  border-bottom: 5px solid lightgray;
   justify-content: flex-start;
   flex-direction: column;
   height: 650px;

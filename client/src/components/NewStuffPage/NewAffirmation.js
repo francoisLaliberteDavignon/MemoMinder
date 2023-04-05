@@ -36,11 +36,11 @@ const NewAffirmation = () => {
 
 
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <NewSidebar/>
       <Right>
         <NewNavBar/>
-        <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
           <Input name={"affirmation"} onChange={(e) => handleChange(e)}/>
           <Submit type="Submit">Add to today's journal! </Submit>
         </Form>
@@ -56,7 +56,6 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   margin: 30px;
-
 `
 
 const Right = styled.div`
@@ -66,8 +65,6 @@ const Right = styled.div`
 
 const Form = styled.form`
   display: flex;
-  border: 1px solid lightgray;
-  border-radius: 15px;
   height: 75vh;
   flex-direction: column;
   align-items: center;

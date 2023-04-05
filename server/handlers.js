@@ -142,6 +142,28 @@ const patchBrainer = async (req, res) => {
 
 /***********************************************************************/
 
+const deleteBrainer = async (req, res) => {
+
+	const { _id } = req.params
+
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const deleteBrainerBy_ID = await db.collection('brainers').deleteOne({_id: _id})	
+		deleteBrainerBy_ID.deletedCount === 1 ?
+			res.status(200).json({status:200, message: "Brainer deleted"}) :
+			res.status(400).json({status:400, message: "T'was an error"})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!", error: error.stack})
+		client.close()
+	}
+}
+
+/***********************************************************************/
+
 const getJournalEntries = async (req, res) => {
 
 	const paramsDate = req.params;
@@ -303,11 +325,34 @@ const postNewReminder = async (req, res) => {
 	}
 }
 
+/***********************************************************************/
+
+const deleteReminder = async (req, res) => {
+
+	const { _id } = req.params
+
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const deleteReminder = await db.collection('reminders').deleteOne({_id: _id})	
+		deleteReminder.deletedCount === 1 ?
+			res.status(200).json({status:200, message: "Reminder deleted"}) :
+			res.status(400).json({status:400, message: "T'was an error"})
+		client.close()
+  } catch (error) {
+		res.status(500).json({status:500, message: "something went wrong!", error: error.stack})
+		client.close()
+	}
+}
+
 module.exports = { 
 	postNewUser, 
 	postNewEntry, 
 	postNewBrainer,
 	patchBrainer, 
+	deleteBrainer,
 	getBrainDump, 
 	getJournalEntries, 
 	postNewJournalEntry,
@@ -315,5 +360,7 @@ module.exports = {
   postNewAffirmation,
 	getReminders,
 	getRemindersByDate,
-	postNewReminder
+	postNewReminder,
+	deleteReminder,
+
 }

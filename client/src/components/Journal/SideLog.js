@@ -8,7 +8,7 @@ import DailySpread from './DailySpread'
 const SideLog = () => {
 
   return (
-    <Wrapper>
+    <Wrapper >
       <Weather/>
       <HabitLog/>
       <DailySpread/>
@@ -20,19 +20,19 @@ const SideLog = () => {
 export default SideLog
 
 const Wrapper = styled.div`
-  border: 1px solid gray;
-  border-radius: 15px;
+
   height: 650px;
   width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 `
 
 const NavBack = styled(Link)`
-  width: 150px;
+  width: 100px;
+  z-index: 5;
   height: 50px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

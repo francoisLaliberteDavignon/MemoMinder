@@ -18,7 +18,7 @@ const Header = ({paramsToday}) => {
 
   return (
 
-    <Wrapper>
+    <Wrapper className='wrapper'>
       <Today className='navigation' to={`/journal/${paramsToday}`}>
         <p>{paramsToday}</p>
         <>View today's journal</>
@@ -34,8 +34,6 @@ export default Header
 const Wrapper = styled.div`
   height: 190px;
   width: 625px;
-  border: 1px solid gray;
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;

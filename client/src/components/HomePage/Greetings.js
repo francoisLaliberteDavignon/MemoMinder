@@ -5,8 +5,8 @@ import { useContext } from 'react';
 import { UserContext } from '../../UserContext';
 
 const Greetings = () => {
-  const { user, logout } = useAuth0();
 
+  const { user, logout } = useAuth0();
   const { currentUser, setCurrentUser } = useContext(UserContext)
   
   useEffect(() => {
@@ -38,8 +38,8 @@ const Greetings = () => {
 
   return (
     <>
-      {!currentUser ? <Greeting>Loading</Greeting> :
-      <Greeting>
+      {!currentUser ? <Greeting className='wrapper'>Loading</Greeting> :
+      <Greeting className='wrapper'>
         <p>{currentUser.nickname}</p>
         <ProfilePic src={currentUser.picture}/> 
         <Logout onClick={() => handleLogOut()}>Logout</Logout>
@@ -52,8 +52,7 @@ const Greetings = () => {
 const Greeting = styled.div`
   height: 190px;
   width: 225px;
-  border: 1px solid gray;
-  border-radius: 15px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,11 +64,6 @@ const ProfilePic = styled.img`
   border-radius: 50%;
 `
 
-const Logout = styled.button`
-  &:hover{
-    box-shadow: 14px 14px var(--color-green);
-    outline: 3px solid goldenrod
-  }
-`
+const Logout = styled.button``
 
 export default Greetings

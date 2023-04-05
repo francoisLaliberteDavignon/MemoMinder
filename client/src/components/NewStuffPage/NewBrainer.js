@@ -39,7 +39,8 @@ const NewBrainer = () => {
     .catch((error) => {
       console.log(error)
       setIsSubmitting(false);
-    });  }
+    });  
+  }
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -49,15 +50,16 @@ const NewBrainer = () => {
   }
   
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <NewSidebar/>
       <Right>
         <NewNavBar/>
-        <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
           <Input 
             name={"task"} 
             onChange={(e) => handleChange(e)}
-            placeholder="Add something to your brain dump"   
+            placeholder="Add something to your brain dump"
+            value={inputValue}   
           />
           <Options>
             <label htmlFor="isImportant">Is this important?</label>
@@ -97,8 +99,6 @@ const Right = styled.div`
 
 const Form = styled.form`
   display: flex;
-  border: 1px solid lightgray;
-  border-radius: 15px;
   height: 75vh;
   flex-direction: column;
   align-items: center;

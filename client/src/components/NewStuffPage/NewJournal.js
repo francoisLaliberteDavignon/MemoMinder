@@ -34,7 +34,6 @@ const NewJournal = () => {
       console.log(error)
       setIsSubmitting(false);
     });
-    
   }
 
   const handleChange = (e) => {
@@ -46,11 +45,11 @@ const NewJournal = () => {
 
 
   return (
-    <Wrapper>
+    <Wrapper className="wrapper">
       <NewSidebar/>
       <Right>
         <NewNavBar/>
-        <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
           <Input 
             placeholder="Add a new journal entry..." 
             name={"input"} 
@@ -85,8 +84,6 @@ const Right = styled.div`
 
 const Form = styled.form`
   display: flex;
-  border: 1px solid lightgray;
-  border-radius: 15px;
   height: 75vh;
   flex-direction: column;
   align-items: center;
@@ -103,5 +100,4 @@ const Input = styled.textarea`
 `;
 
 const Submit = styled.button`
-  width: 360px;
 `
