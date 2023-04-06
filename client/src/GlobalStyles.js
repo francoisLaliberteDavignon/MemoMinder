@@ -56,7 +56,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 40px;
   }
 
   h2 {
@@ -91,7 +91,7 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     font-size: 14px;
-    margin: 8px
+    font-family: var(--font-body);
   }
 
   /* Buttons */

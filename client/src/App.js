@@ -19,8 +19,8 @@ const App = () => {
     <GlobalStyles/>
       <Routes>
         <Route path='/' element={<Login/>}/>
-        <Route path='/homepage' element={<Homepage/>}/>
-        <Route path='/journal/:date' element={<Journal/>}/>
+        <Route path='/homepage/:date' element={<Homepage/>}/>
+        <Route path='/dailyview/:date' element={<DailyView/>}/>
 
         <Route path='/new/journalEntry' element={<NewJournal/>}/>
         <Route path='/new/brainer' element={<NewBrainer/>}/>
