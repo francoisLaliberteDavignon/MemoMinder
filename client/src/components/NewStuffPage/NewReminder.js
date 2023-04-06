@@ -67,7 +67,7 @@ const NewReminder = () => {
         <Form className="wrapper">
           <FormContainer>
             <InputField>
-              <label htmlFor="task">Title</label>
+              <label htmlFor="task">Reminder</label>
               <Input 
                 name="task"
                 onChange={(e) => handleChange(e)}

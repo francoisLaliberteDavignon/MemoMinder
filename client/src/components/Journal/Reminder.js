@@ -32,7 +32,7 @@ const Reminder = ({reminder, getReminders}) => {
         onMouseEnter={() => setIsHovered(true)} 
         onMouseLeave={() => setIsHovered(false)}>
       <div className={isHovered ? "title-hovered" : ""}>
-        {reminder.title}
+        {reminder.task}
       </div>
       <div>
         {isHovered ? <TbCheck/> : <>X</>}
