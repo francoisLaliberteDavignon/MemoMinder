@@ -1,11 +1,14 @@
 import styled from "styled-components"
-import BrainDump from './BrainDump'
-import SideLog from "./SideLog"
+import DailySpread from "../HomePage/DailySpread"
 import DailyEntries from "./DailyEntries"
+import BrainDump from './BrainDump'
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
+import Header from "../../Header"
+import Banner from "../../Banner"
 
-const Journal = () => {
+
+const DailyView = () => {
   
   const { date } = useParams();
   const [ dailyReminders, setDailyReminders ] = useState(null)
@@ -25,29 +28,31 @@ const Journal = () => {
 
 
   return (
-    <Wrapper className="wrapper">
-      <Left>
-        <SideLog 
-          getReminders={getReminders} 
-          dailyReminders={dailyReminders}/>
-      </Left>
-      <Right>
-        <BrainDump getReminders={getReminders}/>
-        <DailyEntries/>
-      </Right>
-    </Wrapper>
+    <>
+    <Header/>
+    <Banner paramsToday={date}/>
+    <Main >
+      <BrainDump/>
+      <DailySpread           
+        getReminders={getReminders} 
+        dailyReminders={dailyReminders}
+      />
+      <DailyEntries/>
+
+    </Main>
+    </>
   )
 }
 
-export default Journal
+export default DailyView
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+const Main = styled.div`
   margin: 30px;
-  height: 650px;
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
 `
+
 const Left = styled.div`
   display: flex;
   flex-direction: column;

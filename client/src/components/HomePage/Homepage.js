@@ -1,55 +1,60 @@
 import styled from "styled-components"
-import Greetings from "./Greetings"
-import Header from "../HomePage/Header"
-import Calendrier from "./Calendar"
-import Sidebar from './Sidebar'
+import Header from "../../Header"
+import Banner from "../../Banner"
 
-import { useContext, useState } from "react"
+import Calendrier from "./Calendar"
+import DailySpread from "./DailySpread"
+import { useContext, useState, useEffect } from "react"
 import { DateContext } from "../../DateContext"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const Homepage = () => {
 
   const navigate = useNavigate()
   const { paramsToday, today, setToday } = useContext(DateContext)
 
+  const [ dailyReminders, setDailyReminders ] = useState(null)
+
+  const getReminders = () => {
+    fetch(`/getReminders/${today}`)
+    .then(res => res.json())
+    .then((parsedData) => {
+      setDailyReminders(parsedData.data)
+    })
+    .catch(error => console.log(error.stack))
+  }
+
+  useEffect(() => {
+    getReminders()
+  },[])
 
   let paramsDate;
   
   const handleClickDay = (e) => {
     paramsDate = (e.toISOString().substring(0, 10))
-    navigate(`/journal/${paramsDate}`)
+    navigate(`/dailyview/${paramsDate}`)
   }
 
   return (
-    <Wrapper className="wrapper">
-      <Top>
-        <Greetings/>
-        <Header paramsToday={paramsToday}/>
-      </Top>
-      <Main className="wrapper">
-        <Calendrier className="calendar" handleClickDay={handleClickDay}/>
-        <Sidebar/>
+    <>
+      <Header/>
+      <Banner paramsToday={paramsToday}/>
+      <Main >
+          <Calendrier className="calendar" handleClickDay={handleClickDay}/>
+          <DailySpread 
+            dailyReminders={dailyReminders}
+            getReminders={getReminders}
+          />
       </Main>
-    </Wrapper>
+    </>
   )
 }
 
 export default Homepage
 
-const Wrapper = styled.div`
-  display:flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  height: 650px;
-  margin: 30px;
-`
 const Main = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 450px;
-`
-const Top = styled.div`
-  display: flex;
+  margin: 30px;
+  display:flex;
+  justify-content: space-around;
   flex-direction: row;
 `

@@ -16,6 +16,9 @@ const DailyEntries = () => {
     .then(parsedData => {
       setJournalEntries(parsedData.data)
     })
+    .catch((error) => {
+      console.log(error)
+    })
   },[])
 
   return (
@@ -24,7 +27,7 @@ const DailyEntries = () => {
       {journalEntries.length === 0 ? <>No entry at this date</> :
       <ul>
   {    journalEntries.map((entry) => {
-        return <Entry entry={entry} />
+        return <Entry entry={entry} key={entry._id} />
       })}
       </ul>}
     </Wrapper>
@@ -37,7 +40,6 @@ export default DailyEntries
 const Wrapper = styled.div`
   width: 600px;
   padding-left: 25px;
-  height: 41%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

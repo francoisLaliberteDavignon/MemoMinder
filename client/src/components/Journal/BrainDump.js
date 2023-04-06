@@ -14,6 +14,9 @@ const BrainDump = ({getReminders}) => {
     .then(parsedData => {
       setBrainDump(parsedData.data)
     })
+    .catch((error) => {
+      console.log(error)
+    })
   }
   
   useEffect(() => {
@@ -54,7 +57,7 @@ export default BrainDump
 const Wrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  width: 600px;
+  width: 30%;
   padding: 25px;
   padding-top: 0px;
   height: 60%;

@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --color-sand: #FFF0B1;
     --color-border: #00F0B1;
     --color-green: #1E9E6C;
-    --color-gray: #C1CCCC;
+    --color-gray: #E3ECEC24 ;
     --color-orange: #E27A21;
     --color-pink: #FFE1F0;
 
@@ -26,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
 
   /* Set default font family, size, and line height */
   body {
-    background-color: var(--color-green);
+    background-color: white;
     display: flex;
     justify-content: center;
     font-family: var(--font-body);
@@ -34,6 +34,10 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
     scrollbar-width: thin;
     scrollbar-color:  var(--color-border) var(--color-green); 
+  }
+
+  .main {
+    background-color: var(--color-gray);
   }
 
   .wrapper {
@@ -122,14 +126,14 @@ const GlobalStyles = createGlobalStyle`
     border: 1px lightgray solid;
     border-radius: 15px;
     padding: 10px;
-    background-color: var(--color-pink);
+    background-color: var(--color-green);
     font-family: var(--font-heading);
     font-size: 13px;
     transition: all 0.3s ease;
     text-align: center;
       &:hover{
       overflow: hidden;
-      box-shadow:   16px -16px var(--color-orange);
+      box-shadow:   8px -8px var(--color-orange);
     }
   &.active{
       box-shadow:   16px -16px var(--color-orange);
@@ -198,12 +202,11 @@ const GlobalStyles = createGlobalStyle`
   .calendar {
     max-width: 100%;
     font-size: 25px;
-    background-color: var(--color-pink);
+    background-color: white;
     color: #222;
     border-radius: 8px;
     line-height: 1.125em;
     border: none;
-
   }
 
   .calendar .styledDate {

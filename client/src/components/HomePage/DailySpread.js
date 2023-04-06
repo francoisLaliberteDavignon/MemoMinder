@@ -4,8 +4,8 @@ import Reminder from './Reminder'
 const DailySpread = ({getReminders, dailyReminders}) => {
 
   return (
-    <Wrapper className='wrapper'>
-      <Title>Daily spread</Title>
+    <Wrapper>
+      <Title>Reminders</Title>
       {!dailyReminders? <></> :
       dailyReminders.map((reminder) => {
         return <Reminder 
@@ -23,8 +23,9 @@ export default DailySpread
 const Wrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  width: auto;
-  height: 200px;
+  margin-left: 15px;
+  width: 30%;
+  height: 550px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

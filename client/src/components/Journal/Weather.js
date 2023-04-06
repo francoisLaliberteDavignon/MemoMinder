@@ -17,7 +17,7 @@ const [weather, setWeather] = useState()
   
 
   return (
-    <Wrapper className="wrapper">
+    <Wrapper>
       {!weather? <Title>Weather</Title> :
       <>
         <Title>{weather.city_name}'s weather</Title>
@@ -38,7 +38,7 @@ export default Weather
 
 const Wrapper = styled.div`
   width: auto;
-  height: 200px;
+  height: 125px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;

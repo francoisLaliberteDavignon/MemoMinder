@@ -4,13 +4,16 @@ import GlobalStyles from "./GlobalStyles";
 
 import Login from "./Login";
 import Homepage from './components/HomePage/Homepage'
-import Journal from "./components/Journal/Journal";
+import DailyView from "./components/Journal/DailyView";
 
 import NewJournal from "./components/NewStuffPage/NewJournal";
 import NewBrainer from "./components/NewStuffPage/NewBrainer";
 import NewReminder from "./components/NewStuffPage/NewReminder";
 import NewAffirmation from "./components/NewStuffPage/NewAffirmation";
 import NewHabitLog from "./components/NewStuffPage/NewHabitLog";
+
+import { useContext } from "react";
+import { DateContext } from "./DateContext";
 
 const App = () => {
 
@@ -19,7 +22,7 @@ const App = () => {
     <GlobalStyles/>
       <Routes>
         <Route path='/' element={<Login/>}/>
-        <Route path='/homepage/:date' element={<Homepage/>}/>
+        <Route path={`/homepage`} element={<Homepage/>}/>
         <Route path='/dailyview/:date' element={<DailyView/>}/>
 
         <Route path='/new/journalEntry' element={<NewJournal/>}/>
