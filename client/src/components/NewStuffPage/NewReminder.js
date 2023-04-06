@@ -14,7 +14,6 @@ const NewReminder = () => {
   const [ start, setStart ] = useState(new Date())
   const [ end, setEnd ] = useState(new Date())
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -42,11 +41,11 @@ const NewReminder = () => {
   }
 
   const handleChange = (e) => {
-    const name = e.target.name;
+    const task = e.target.task;
     const value = e.target.value;
     setPostData(values => ({
       ...values, 
-      [name]: value, 
+      [task]: value, 
       start: start.toISOString().substring(0, 10), 
       end: end.toISOString().substring(0, 10)
     }))
@@ -58,42 +57,32 @@ const NewReminder = () => {
     setPostData(values => ({...values, 
       start: date.toISOString().substring(0, 10)
     }))
-    
   }
 
-  const handleChangeEnd = (date) => {
-    setEnd(date)
-    setPostData(values => ({...values, 
-      end: date.toISOString().substring(0, 10)
-    }))
-    
-  }
   return (
     <Wrapper className="wrapper">
       <NewSidebar/>
       <Right>
         <NewNavBar/>
         <Form className="wrapper">
-          <div>
-            <label htmlFor="title">Title</label>
-            <Input 
-              name="title"
-              onChange={(e) => handleChange(e)}
-              value={inputValue}
-            />
-          </div>
-          <div>
-            <label htmlFor="start">Start</label>
-            <DatePicker selected={start} onChange={(date) => handleChangeStart(date)} />
-          </div>
-          <div>
-            <label htmlFor="end">End</label>
-            <DatePicker selected={end} onChange={(date) => handleChangeEnd(date)} />
-          </div>
-          <Submit
-            onClick={handleSubmit}             
-            disabled={isSubmitting || inputValue.trim() === ''} 
-          >{isSubmitting ? 'Adding...' : 'Add to calendar!'}</Submit>
+          <FormContainer>
+            <InputField>
+              <label htmlFor="task">Title</label>
+              <Input 
+                name="task"
+                onChange={(e) => handleChange(e)}
+                value={inputValue}/>
+            </InputField>
+            <InputField>
+              <label htmlFor="start">Start</label>
+              <DatePick selected={start} onChange={(date) => handleChangeStart(date)} />
+            </InputField>
+            <Submit
+              onClick={handleSubmit}             
+              disabled={isSubmitting || inputValue.trim() === ''} 
+            >{isSubmitting ? 'Adding...' : 'Add to calendar!'}
+            </Submit>
+          </FormContainer>
         </Form>
       </Right>
     </Wrapper>
@@ -122,12 +111,34 @@ const Form = styled.form`
   align-items: center;
 `;
 
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 50px;
+`
+
+const InputField = styled.div`
+  display: flex;
+  width: 360px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  & > div {
+    width: fit-content;
+  }
+`
+
 const Input = styled.input`
   resize: none;
   justify-content: flex-start;
-  margin: 30px;
 `;
 
 const Submit = styled.button`
+  margin-top: 50px;
   width: 360px;
+`
+
+const DatePick = styled(DatePicker)`
+  height: 25px;
 `

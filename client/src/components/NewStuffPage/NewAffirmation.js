@@ -41,8 +41,12 @@ const NewAffirmation = () => {
       <Right>
         <NewNavBar/>
         <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
-          <Input name={"affirmation"} onChange={(e) => handleChange(e)}/>
-          <Submit type="Submit">Add to today's journal! </Submit>
+          <Input 
+            placeholder="This will be shown randomly on your Homepage!"
+            name={"affirmation"} 
+            onChange={(e) => handleChange(e)}
+          />
+          <Submit type="Submit">Add to your affirmations</Submit>
         </Form>
       </Right>
     </Wrapper>
@@ -70,9 +74,10 @@ const Form = styled.form`
   align-items: center;
 `;
 
-const Input = styled.textarea`
+const Input = styled.input`
   resize: none;
-  height: 25vh;
+  font-size: 25px;
+  height: 60px;
   width: 560px;
   justify-content: flex-start;
   margin: 30px;

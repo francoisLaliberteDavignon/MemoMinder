@@ -27,7 +27,7 @@ const Homepage = () => {
         <Greetings/>
         <Header paramsToday={paramsToday}/>
       </Top>
-      <Main>
+      <Main className="wrapper">
         <Calendrier className="calendar" handleClickDay={handleClickDay}/>
         <Sidebar/>
       </Main>
@@ -39,7 +39,6 @@ export default Homepage
 
 const Wrapper = styled.div`
   display:flex;
-  border-bottom: 5px solid lightgray;
   justify-content: flex-start;
   flex-direction: column;
   height: 650px;
@@ -48,7 +47,7 @@ const Wrapper = styled.div`
 const Main = styled.div`
   display: flex;
   flex-direction: row;
-  height: auto;
+  height: 450px;
 `
 const Top = styled.div`
   display: flex;

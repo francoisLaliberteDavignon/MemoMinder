@@ -5,14 +5,18 @@ import Weather from './Weather'
 import HabitLog from "./HabitLog"
 import DailySpread from './DailySpread'
 
-const SideLog = () => {
+const SideLog = ({getReminders, dailyReminders}) => {
 
   return (
     <Wrapper >
       <Weather/>
       <HabitLog/>
-      <DailySpread/>
-      <NavBack to={'/homepage'} className="navigation">Back to homepage!</NavBack>
+      <DailySpread 
+      getReminders={getReminders}
+      dailyReminders={dailyReminders}/>
+      <NavDiv className="wrapper">
+        <NavBack to={'/homepage'} className="navigation">Back to homepage!</NavBack>  
+      </NavDiv>
     </Wrapper>
   )
 }
@@ -21,7 +25,7 @@ export default SideLog
 
 const Wrapper = styled.div`
 
-  height: 650px;
+  height: 640px;
   width: 250px;
   display: flex;
   flex-direction: column;
@@ -31,10 +35,13 @@ const Wrapper = styled.div`
 const NavBack = styled(Link)`
   width: 100px;
   z-index: 5;
-  height: 50px;
   margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: auto;
+`
+
+const NavDiv = styled.div`
+  
 `

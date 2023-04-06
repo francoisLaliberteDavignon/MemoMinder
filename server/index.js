@@ -10,6 +10,7 @@ const {
   postNewEntry,
   getBrainDump,
   postNewBrainer,
+  scheduleBrainer,
   patchBrainer,
   deleteBrainer,
   getJournalEntries,
@@ -36,6 +37,7 @@ express()
 
   .get('/getBrainDump', getBrainDump)
   .post('/newBrainer', postNewBrainer)
+  .post('/scheduleBrainer/:_id', scheduleBrainer)
   .patch('/patchBrainer', patchBrainer)
   .delete('/delete/brainer/:_id', deleteBrainer)
 

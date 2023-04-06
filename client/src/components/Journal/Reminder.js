@@ -35,7 +35,7 @@ const Reminder = ({reminder, getReminders}) => {
         {reminder.title}
       </div>
       <div>
-        {isHovered ? <TbCheck/> :  <>X</>}
+        {isHovered ? <TbCheck/> : <>X</>}
       </div>
       </Item>
     </Wrapper>
@@ -55,8 +55,11 @@ const Item = styled.div`
   align-items: center;
   font-size: 15px;
   justify-content: space-between;
-  transition: 750ms;
+  transition: all 0.75s ease;
   transform: translateX(0);
+  &.task-deleted {
+    transform: translateX(-300%);
+  }
 `;
 
 const Wrapper = styled.div`

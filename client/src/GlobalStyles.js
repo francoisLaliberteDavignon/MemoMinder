@@ -32,6 +32,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.5;
+    scrollbar-width: thin;
+    scrollbar-color:  var(--color-border) var(--color-green); 
   }
 
   .wrapper {
@@ -139,10 +141,6 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: line-through;
   }
 
-  .task-deleted {
-    transform: translateX(-300%);
-  }
-
   nav ul {
     display: flex;
     list-style: none;
@@ -193,7 +191,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .icon :hover {
-    background-color: lightgray;
     border-radius: 50%;
   }
 

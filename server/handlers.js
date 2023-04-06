@@ -110,6 +110,35 @@ const postNewBrainer = async (req, res) => {
 		client.close()
 	}
 }
+/***********************************************************************/
+const scheduleBrainer = async (req, res) => {
+
+	const scheduledBrainer = {
+  ...req.body	
+	}
+
+	console.log('ligne 120', req.body)
+
+	const client = new MongoClient(MONGO_URI, options)
+  try {
+    await client.connect()
+    const db = client.db('MemoMinder')
+  
+    const scheduled = await db.collection('reminders').insertOne(scheduledBrainer)	
+		console.log(scheduled)
+		if (scheduled) {
+			await db.collection('brainers').deleteOne({_id: scheduledBrainer._id})
+			res.status(200).json({status:200, message: "brainer added to the braindump", data: scheduledBrainer})
+		} else {
+			res.status(400).json({status:400, message: "'Was an error with the brainer", data: req.body})
+		}
+		client.close()
+  } catch (error) {
+		console.log(error.stack)
+		res.status(500).json({status:500, message: "something went wrong!", data: error.stack})
+		client.close()
+	}
+}
 
 /***********************************************************************/
 
@@ -351,6 +380,7 @@ module.exports = {
 	postNewUser, 
 	postNewEntry, 
 	postNewBrainer,
+	scheduleBrainer,
 	patchBrainer, 
 	deleteBrainer,
 	getBrainDump, 

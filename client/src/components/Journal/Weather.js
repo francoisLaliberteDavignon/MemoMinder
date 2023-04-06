@@ -23,13 +23,12 @@ const [weather, setWeather] = useState()
         <Title>{weather.city_name}'s weather</Title>
         <Top>
           <img src={`https://www.weatherbit.io/static/img/icons/${weather.weather.icon}.png`}/>
-          <Temp>{weather.temp}</Temp>
-          <p>{weather.weather.description}</p>
+          <Description>
+            <Temp>{weather.temp} °C</Temp>
+            <p>{weather.weather.description}</p>
+          </Description>
         </Top>
       </>
-
-
-      
       }
     </Wrapper>
   )
@@ -40,7 +39,6 @@ export default Weather
 const Wrapper = styled.div`
   width: auto;
   height: 200px;
-  border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -48,8 +46,12 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h6`
-  margin-left: 10px;
-  text-decoration: underline
+`
+
+const Description = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 `
 
 const Top = styled.div`
@@ -58,5 +60,8 @@ const Top = styled.div`
 `
 
 const Temp = styled.h4`
-  padding: 10px
+  padding: 10px;
+  display: flex;
+  text-align: flex-start;
+  padding-bottom: 0;
 `

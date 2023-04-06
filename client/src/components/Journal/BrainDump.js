@@ -3,9 +3,10 @@ import styled from "styled-components"
 
 import Brainer from "./Brainer"
 
-const BrainDump = () => {
+const BrainDump = ({getReminders}) => {
 
   const [ brainDump, setBrainDump ] = useState([])
+  const [ isBeingScheduled, setIsBeingScheduled ] = useState(null)
 
   const getBrainDump = () => {
     fetch('/getBrainDump')
@@ -21,16 +22,28 @@ const BrainDump = () => {
 
   return (
     <Wrapper className="wrapper">
-    {brainDump.length === 0 ? <>loading</>:  
-    <ul>
-      {brainDump.map((brainer) => {
-        return <Brainer 
-          brainer={brainer} 
-          key={brainer._id}
-          getBrainDump={getBrainDump}  
-        />
-      })}
-    </ul>}
+      <Title>Brain dump</Title>
+      {brainDump.length === 0 ? <>loading</>:
+      <ul>
+        {brainDump.map((brainer, index) => {
+
+            if (isBeingScheduled === index || isBeingScheduled === null) {
+            return (
+              <Brainer 
+              getReminders={getReminders}
+              brainer={brainer} 
+              key={brainer._id}
+              getBrainDump={getBrainDump}
+              isBeingScheduled={isBeingScheduled} 
+              setIsBeingScheduled ={setIsBeingScheduled}
+              index={index}
+            />
+            )
+          } else {
+            return null
+          }
+        })}
+      </ul>}
     </Wrapper>
   )
 }
@@ -44,6 +57,12 @@ const Wrapper = styled.div`
   width: 600px;
   padding: 25px;
   padding-top: 0px;
-  height: 50%;
+  height: 60%;
   display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+`
+
+const Title = styled.h6`
+
 `

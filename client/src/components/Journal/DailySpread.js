@@ -1,25 +1,7 @@
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import Reminder from './Reminder'
 
-const DailySpread = () => {
-
-  const { date } = useParams();
-  const [ dailyReminders, setDailyReminders ] = useState(null)
-
-  const getReminders = () => {
-    fetch(`/getReminders/${date}`)
-    .then(res => res.json())
-    .then((parsedData) => {
-      setDailyReminders(parsedData.data)
-    })
-    .catch(error => console.log(error.stack))
-  }
-
-  useEffect(() => {
-    getReminders()
-  },[])
+const DailySpread = ({getReminders, dailyReminders}) => {
 
   return (
     <Wrapper className='wrapper'>
@@ -39,6 +21,8 @@ const DailySpread = () => {
 export default DailySpread
 
 const Wrapper = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
   width: auto;
   height: 200px;
   display: flex;

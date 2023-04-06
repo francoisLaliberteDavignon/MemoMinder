@@ -33,7 +33,7 @@ export default Header
 
 const Wrapper = styled.div`
   height: 190px;
-  width: 625px;
+  width: 637px;
   display: flex;
   flex-direction: column;
   justify-content: center;

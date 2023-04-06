@@ -20,12 +20,13 @@ const DailyEntries = () => {
 
   return (
     <Wrapper className="wrapper">
-    {journalEntries.length === 0 ? <>No entry at this date</> :
-    <ul>
-{    journalEntries.map((entry) => {
-      return <Entry entry={entry} />
-    })}
-    </ul>}
+      <Title>Today's journal</Title>
+      {journalEntries.length === 0 ? <>No entry at this date</> :
+      <ul>
+  {    journalEntries.map((entry) => {
+        return <Entry entry={entry} />
+      })}
+      </ul>}
     </Wrapper>
   )
 }
@@ -35,8 +36,13 @@ export default DailyEntries
 
 const Wrapper = styled.div`
   width: 600px;
-  padding: 25px;
-  height: 50%;
+  padding-left: 25px;
+  height: 41%;
   display: flex;
-  border-bottom: none;
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+const Title = styled.h6`
+  padding-top: none;
 `
