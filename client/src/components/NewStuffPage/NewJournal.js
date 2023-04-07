@@ -43,7 +43,6 @@ const NewJournal = () => {
     setInputValue(value);
   }
 
-
   return (
     <Wrapper className="wrapper">
       <NewSidebar/>
@@ -54,8 +53,7 @@ const NewJournal = () => {
             placeholder="Add a new journal entry..." 
             name={"input"} 
             onChange={(e) => handleChange(e)}
-            value={inputValue}
-          />
+            value={inputValue}/>
           <Submit 
             disabled={isSubmitting || inputValue.trim() === ''} 
             onClick={handleSubmit}
@@ -91,12 +89,10 @@ const Form = styled.form`
 
 const Input = styled.textarea`
   resize: none;
-  height: 25vh;
-  width: 560px;
+  width: 25vw;
   justify-content: flex-start;
   align-items: flex-start;
   margin: 30px;
-
 `;
 
 const Submit = styled.button`

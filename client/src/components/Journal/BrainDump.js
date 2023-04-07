@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import styled from "styled-components"
 
 import Brainer from "./Brainer"
+import NewBrainer from "../NewStuffPage/NewBrainer"
 
 const BrainDump = ({getReminders}) => {
 
@@ -24,30 +25,30 @@ const BrainDump = ({getReminders}) => {
   }, [])
 
   return (
-    <Wrapper className="wrapper">
-      <Title>Brain dump</Title>
+    <Wrapper>
+      <Title>BRAIN DUMP</Title>
       {brainDump.length === 0 ? <>loading</>:
-      <ul>
+      <>
         {brainDump.map((brainer, index) => {
-
-            if (isBeingScheduled === index || isBeingScheduled === null) {
-            return (
-              <Brainer 
-              getReminders={getReminders}
-              brainer={brainer} 
-              key={brainer._id}
-              getBrainDump={getBrainDump}
-              isBeingScheduled={isBeingScheduled} 
-              setIsBeingScheduled ={setIsBeingScheduled}
-              index={index}
-            />
-            )
-          } else {
-            return null
-          }
-        })}
-      </ul>}
-    </Wrapper>
+          if (isBeingScheduled === index || isBeingScheduled === null) {
+          return (
+            <Brainer 
+            getReminders={getReminders}
+            brainer={brainer} 
+            key={brainer._id}
+            getBrainDump={getBrainDump}
+            isBeingScheduled={isBeingScheduled} 
+            setIsBeingScheduled ={setIsBeingScheduled}
+            index={index}
+          />
+          )
+        } else {
+          return null
+        }
+      })}
+      <NewBrainer getBrainDump={getBrainDump}/>
+    </>}
+  </Wrapper>
   )
 }
 
@@ -57,15 +58,13 @@ export default BrainDump
 const Wrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  width: 30%;
-  padding: 25px;
-  padding-top: 0px;
-  height: 60%;
-  display: flex;
-  align-items: flex-start;
+  width:40vw;
+  height: 50vh;  display: flex;
   flex-direction: column;
+  align-items: flex-start;
 `
 
 const Title = styled.h6`
+    margin-left: 4px;
 
 `

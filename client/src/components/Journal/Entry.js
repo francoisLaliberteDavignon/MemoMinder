@@ -9,4 +9,9 @@ const Entry = ({entry}) => {
 export default Entry
 
 const Item = styled.p`
+  width: 35vw;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
 `

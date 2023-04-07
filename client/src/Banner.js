@@ -20,9 +20,8 @@ const Banner = ({today, paramsToday}) => {
   return (
     <Wrapper>
       <Weather/>
-      <Today className='navigation' to={`/dailyview/${paramsToday}`}>
-        <p>{paramsToday}</p>
-        <p>View today's journal</p>
+      <Today >
+        {/* <p>{paramsToday}</p> */}
       </Today>
       {!randomAffirmation ? <Affirmation></Affirmation> :
       <Affirmation>{randomAffirmation.affirmation}</Affirmation>}
@@ -34,8 +33,9 @@ export default Banner
 
 const Wrapper = styled.div`
   background-color: var(--color-green);
-  height: 20%;
-  width: 100vw;
+  height: 15vh;
+  max-height: 15vh;
+  width: 100%;
   display: flex;
   padding: 25px;
   justify-content: space-between;
@@ -43,10 +43,11 @@ const Wrapper = styled.div`
 `
 
 const Affirmation = styled.h5`
-  max-width: 350px
+  max-width: 350px;
 `
 
-const Today = styled(Link)`
+const Today = styled.div`
+  position: relative;
   height: 65%;
   margin-left: 15px;
 `

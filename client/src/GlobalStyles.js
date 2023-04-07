@@ -15,7 +15,26 @@ const GlobalStyles = createGlobalStyle`
     --font-body: 'PublicSansRegular';
   }
 
-  /* Reset styles */
+  /*****Media query *****/
+
+@media (max-width: 1024px) { 
+  .wrapper{
+    flex-direction: column;
+  }
+  .after_media_query{
+    width: 100%;
+  } 
+} 
+
+@media (min-width: 1025px) { 
+  .wrapper{
+    flex-direction: row;
+  }
+
+} 
+
+
+  /*****Reset styles *****/
   *,
   *::before,
   *::after {
@@ -23,10 +42,17 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  html body div#root {
+    width: 100%;
+  }
 
-  /* Set default font family, size, and line height */
+
+  /*****Default font, style and line-height *****/
+
+
   body {
     background-color: white;
+    min-width: 100vw;
     display: flex;
     justify-content: center;
     font-family: var(--font-body);
@@ -37,15 +63,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .main {
-    background-color: var(--color-gray);
+    background-color: var(--color-green);
   }
 
-  .wrapper {
-    background-color: var(--color-sand);
-    border: 6px solid var(--color-gray);
-  }
-
-  /* Headings */
+  /******  Headings ******/
   h1,
   h2,
   h3,
@@ -56,7 +77,6 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     line-height: 1.2;
     text-align: center;
-    margin-top: 10px
   }
 
   h1 {
@@ -81,6 +101,7 @@ const GlobalStyles = createGlobalStyle`
 
   h6 {
     font-size: 16px;
+    margin: 15px 0;
   }
 
   /* Links */
@@ -128,7 +149,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 10px;
     background-color: var(--color-green);
     font-family: var(--font-heading);
-    font-size: 13px;
+    font-size: min(max(1rem, 1.2vw), 13px);
     transition: all 0.3s ease;
     text-align: center;
       &:hover{
@@ -168,6 +189,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   input {
+    font-size: 15px;
+    border: none;
+
+
     &:focus{
     outline: none;
     }
@@ -179,14 +204,21 @@ const GlobalStyles = createGlobalStyle`
     background: #555;
     position: relative;
     border-radius: 5px;
-    
   }
 
   textarea {
     font-family: var(--font-body);
+    border: none;
     &:focus{
     outline: none;
     }
+  }
+
+  .react-datepicker-wrapper {
+    width: fit-content;
+    height: fit-content;
+
+block-size: fit-content;
   }
 
   .icon {

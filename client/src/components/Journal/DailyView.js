@@ -1,12 +1,10 @@
 import styled from "styled-components"
 import DailySpread from "../HomePage/DailySpread"
 import DailyEntries from "./DailyEntries"
-import BrainDump from './BrainDump'
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Header from "../../Header"
 import Banner from "../../Banner"
-
 
 const DailyView = () => {
   
@@ -26,19 +24,15 @@ const DailyView = () => {
     getReminders()
   },[])
 
-
   return (
     <>
     <Header/>
     <Banner paramsToday={date}/>
     <Main >
-      <BrainDump/>
+      <DailyEntries/>
       <DailySpread           
         getReminders={getReminders} 
-        dailyReminders={dailyReminders}
-      />
-      <DailyEntries/>
-
+        dailyReminders={dailyReminders}/>
     </Main>
     </>
   )
@@ -49,16 +43,6 @@ export default DailyView
 const Main = styled.div`
   margin: 30px;
   display:flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-direction: row;
-`
-
-const Left = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Right = styled.div`
-  display: flex;
-  flex-direction: column;
 `

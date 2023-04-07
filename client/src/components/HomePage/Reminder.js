@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { TbCheck } from "react-icons/tb";
 import { useState } from 'react';
@@ -32,7 +31,7 @@ const Reminder = ({reminder, getReminders}) => {
         onMouseEnter={() => setIsHovered(true)} 
         onMouseLeave={() => setIsHovered(false)}>
       <div className={isHovered ? "title-hovered" : ""}>
-        {reminder.task}
+        <p>{reminder.task}</p>
       </div>
       <div>
         {isHovered ? <TbCheck/> : <>X</>}
@@ -48,7 +47,7 @@ export default Reminder
 const Item = styled.div`
   border: 1px solid lightgray;
   border-radius: 15px;
-  width: 235px;
+  width: 35vw;
   margin-top: 10px;
   padding: 5px 15px;
   display: flex;
@@ -58,7 +57,7 @@ const Item = styled.div`
   transition: all 0.75s ease;
   transform: translateX(0);
   &.task-deleted {
-    transform: translateX(-300%);
+    transform: translateX(300%);
   }
 `;
 

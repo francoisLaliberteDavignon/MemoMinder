@@ -46,6 +46,7 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h6`
+  margin: 0;
 `
 
 const Description = styled.div`

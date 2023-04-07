@@ -45,13 +45,9 @@ const Header = () => {
   return (
     <NavBar>
       <Wrapper>
-        <Nav to={'/homepage'} >
-          <Logo >Logo here!</Logo>
-          <Scribble/>
-        </Nav>
-        <Nav to={'/new/journalEntry'} className="navigation">New journal log</Nav>
-        <Nav to={'/new/brainer'} className="navigation">New brainer</Nav>
-        <Nav to={'/new/reminder'} className="navigation">New reminder</Nav>
+        <Logo />
+        <Scribble/>
+        <Nav to={'/homepage'} className="navigation">Homepage</Nav>
         <Nav to={'/new/affirmation'} className="navigation">New affirmation</Nav>
         <Nav to={'/new/habitLog'} className="navigation">New habit log</Nav>
       </Wrapper>
@@ -74,8 +70,10 @@ export default Header
 
 const NavBar = styled.div`
   background-color: var(--color-pink);
-  height: 10%;
-  width: 100vw;
+  height: 10vh;
+  max-height: 10vh;
+  padding: 0 15px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 `
@@ -102,7 +100,8 @@ const Scribble = styled(TbScribble)`
 ` 
 
 const Nav = styled(Link)`
-  margin-left: 15px;
+  max-height: 60px;
+  margin-right: 15px;
 `
 
 const Greeting = styled.div`
@@ -115,10 +114,17 @@ const ProfilePic = styled.img`
   height: 50px;
   width: 50px;
   border-radius: 50%;
-
-
+  transition: 0.3s all ease-in-out;
+  &:hover{
+    
+  }
 `
 
 const Logout = styled.button`
-  transition: 750ms;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  ${Greeting}:hover & {
+    opacity: 1;
+  }
 `
