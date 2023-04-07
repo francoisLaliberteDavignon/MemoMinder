@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const HabitLog = () => {
   return (
-    <Wrapper className="wrapper">
+    <Wrapper>
       
       <Title>Habits Log</Title>
 

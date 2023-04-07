@@ -21,7 +21,7 @@ const NewHabitLog = () => {
 
 
   return (
-    <Wrapper className="wrapper">
+    <Wrapper>
       <NewSidebar/>
       <Right>
         <NewNavBar/>

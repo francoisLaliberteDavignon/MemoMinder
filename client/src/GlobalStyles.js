@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --color-sand: #FFF0B1;
     --color-border: #00F0B1;
     --color-green: #1E9E6C;
-    --color-gray: #C1CCCC;
+    --color-gray: #E3ECEC24 ;
     --color-orange: #E27A21;
     --color-pink: #FFE1F0;
 
@@ -15,7 +15,26 @@ const GlobalStyles = createGlobalStyle`
     --font-body: 'PublicSansRegular';
   }
 
-  /* Reset styles */
+  /*****Media query *****/
+
+@media (max-width: 1024px) { 
+  .wrapper{
+    flex-direction: column;
+  }
+  .after_media_query{
+    width: 100%;
+  } 
+} 
+
+@media (min-width: 1025px) { 
+  .wrapper{
+    flex-direction: row;
+  }
+
+} 
+
+
+  /*****Reset styles *****/
   *,
   *::before,
   *::after {
@@ -23,10 +42,17 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  html body div#root {
+    width: 100%;
+  }
 
-  /* Set default font family, size, and line height */
+
+  /*****Default font, style and line-height *****/
+
+
   body {
-    background-color: var(--color-green);
+    background-color: white;
+    min-width: 100vw;
     display: flex;
     justify-content: center;
     font-family: var(--font-body);
@@ -36,12 +62,11 @@ const GlobalStyles = createGlobalStyle`
     scrollbar-color:  var(--color-border) var(--color-green); 
   }
 
-  .wrapper {
-    background-color: var(--color-sand);
-    border: 6px solid var(--color-gray);
+  .main {
+    background-color: var(--color-green);
   }
 
-  /* Headings */
+  /******  Headings ******/
   h1,
   h2,
   h3,
@@ -52,11 +77,10 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     line-height: 1.2;
     text-align: center;
-    margin-top: 10px
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 40px;
   }
 
   h2 {
@@ -77,6 +101,7 @@ const GlobalStyles = createGlobalStyle`
 
   h6 {
     font-size: 16px;
+    margin: 15px 0;
   }
 
   /* Links */
@@ -91,7 +116,7 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     font-size: 14px;
-    margin: 8px
+    font-family: var(--font-body);
   }
 
   /* Buttons */
@@ -122,14 +147,14 @@ const GlobalStyles = createGlobalStyle`
     border: 1px lightgray solid;
     border-radius: 15px;
     padding: 10px;
-    background-color: var(--color-pink);
+    background-color: var(--color-green);
     font-family: var(--font-heading);
-    font-size: 13px;
+    font-size: min(max(1rem, 1.2vw), 13px);
     transition: all 0.3s ease;
     text-align: center;
       &:hover{
       overflow: hidden;
-      box-shadow:   16px -16px var(--color-orange);
+      box-shadow:   8px -8px var(--color-orange);
     }
   &.active{
       box-shadow:   16px -16px var(--color-orange);
@@ -164,6 +189,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   input {
+    font-size: 15px;
+    border: none;
+
+
     &:focus{
     outline: none;
     }
@@ -175,14 +204,21 @@ const GlobalStyles = createGlobalStyle`
     background: #555;
     position: relative;
     border-radius: 5px;
-    
   }
 
   textarea {
     font-family: var(--font-body);
+    border: none;
     &:focus{
     outline: none;
     }
+  }
+
+  .react-datepicker-wrapper {
+    width: fit-content;
+    height: fit-content;
+
+block-size: fit-content;
   }
 
   .icon {
@@ -198,12 +234,11 @@ const GlobalStyles = createGlobalStyle`
   .calendar {
     max-width: 100%;
     font-size: 25px;
-    background-color: var(--color-pink);
+    background-color: white;
     color: #222;
     border-radius: 8px;
     line-height: 1.125em;
     border: none;
-
   }
 
   .calendar .styledDate {

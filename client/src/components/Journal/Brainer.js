@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { FcHighPriority, FcLowPriority } from "react-icons/fc";
-import { FiAlertTriangle, FiTriangle } from "react-icons/fi";
+import { FiAlertTriangle } from "react-icons/fi";
+import { BsClock } from "react-icons/bs";
 import { TbSquareDot, TbCheck } from "react-icons/tb";
 import { AiOutlineSend } from "react-icons/ai";
 import { useState } from "react";
@@ -101,41 +102,33 @@ const Brainer = ({
   }
   
   return (
-    <Out className={isDeleted ? "task-deleted" : "" }>
-      <Item >
-        {isImportant? 
-          <FcHighPriority className="icon"/> : 
-          <TbSquareDot className="icon"/>}
-        <Left className={isHovered ? "title-hovered" : ""}>
-          {brainer.task}
-        </Left> 
+    <Out className={isDeleted ? "task-deleted" : "" || isImportant ? "isImportant" : "" }>
+      <Item className={isHovered ? "title-hovered" : ""}>
+        <p>{brainer.task}</p> 
       </Item>
       <ToSchedule>
       {isBeingScheduled === null ? <></> :
       <SendToSchedule>
         <DatePick
           selected={start} 
-          onChange={(date) => handleChangeStart(date)}
-        />
+          onChange={(date) => handleChangeStart(date)}/>
         <Send 
           onClick={handleScheduled}
-          className="icon"
-        />
-      </SendToSchedule>
-      }
+          className="icon"/>
+      </SendToSchedule>}
       </ToSchedule>
       <Options>
-        <Importance className="icon" onClick={handleImportance}/>
+        <Importance onClick={handleImportance} className={ isImportant? "icon isImportant" : "icon"}/>
         <Schedule 
           className="icon" 
           onClick={handleScheduling}/>
-        <div 
+        <DoneIcon 
           className="icon">
           <Done onClick={handleDelete}
             onMouseEnter={() => setIsHovered(true)} 
             onMouseLeave={() => setIsHovered(false)}    
             />  
-        </div>
+        </DoneIcon>
       </Options >
     </Out>
   )
@@ -145,18 +138,21 @@ export default Brainer
 
 const Out = styled.div`
   border: 1px solid lightgray;
-  margin: 10px 0;
-  z-index: 1;
-  padding: 5px 15px;
   border-radius: 15px;
-  display: inline-flex;
+  width: 35vw;
+  margin-top: 10px;
+  padding: 5px 15px;
+  margin-left: 4px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 550px;
   transition: all 0.75s ease;
   transform: translateX(0);
   &.task-deleted {
-    transform: translateX(-300%);
+    transform: translateX(300%);
+  }
+  &.isImportant {
+    outline: 3px solid pink
   }
 `
 
@@ -165,19 +161,9 @@ const Item = styled.div`
   flex-direction: row;
   align-items: center;
 `
-const Left = styled.div`
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-`
-const ToSchedule = styled.div`
+const ToSchedule = styled.div``
 
-`
-
-const DatePick = styled(DatePicker)` 
-
-`
+const DatePick = styled(DatePicker)``
 
 const SendToSchedule = styled.div`
   display: flex;
@@ -189,7 +175,6 @@ const Send = styled(AiOutlineSend)`
   margin-left: 10px;
   &:hover {
     fill: var(--color-green)
-
   }
 `
 
@@ -197,21 +182,30 @@ const Options = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-top: 8px
+  align-items: center;
 `
 
 const Importance = styled(FiAlertTriangle)`
   &:hover{
-    color: red;
+    color: black;
     fill: red
+  }
+  &.isImportant {
+    color: black;
+    fill: var(--color-pink);
   }
 `
 
-const Schedule = styled(FiTriangle)`
+const Schedule = styled(BsClock)`
   &:hover{
-    color: var(--color-orange);
-    fill: var(--color-orange);
+    color: black;
+    background-color: var(--color-orange);
+    border-radius: 50%;
   }
+`
+
+const DoneIcon = styled.div`
+  margin-top: 7px;
 `
 
 const Done = styled(TbCheck)`

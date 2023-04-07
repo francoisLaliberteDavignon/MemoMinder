@@ -40,7 +40,7 @@ const Calendrier = ({handleClickDay}) => {
   }
 
   return (
-    <Wrapper >
+    <Wrapper>
       <Container>
         <Planner 
           onClickDay={(e) => handleClickDay(e)}
@@ -58,11 +58,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 435px;
-  width: 700px;
-
 `
-
 const Container = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -70,53 +66,83 @@ const Container = styled.div`
 `
 
 const Planner = styled(Calendar)`
-  width: 450px !important; 
-  height: 425px !important; 
+  width: 550px !important; 
+  height: 550px !important; 
 
-.slowDay {
-  position: relative;
-}
+  .slowDay {
+    position: relative;
+  }
 
-.slowDay::after {
-  content: '';
-  position: absolute;
-  border: 1px solid var(--color-green);
-  top: 5px;
-  right: 5px;
-  width: 10px;
-  height: 10px;
-  background-color: var(--color-orange);
-  border-radius: 50%;
-}
-.busyDay {
-  position: relative;
-}
-.busyDay::after {
-  content: '';
-  position: absolute;
-  border: 1px solid var(--color-green);
-  top: 5px;
-  right: 5px;
-  width: 10px;
-  height: 10px;
-  background-color: yellow;
-  border-radius: 50%;
-}
+  .react-calendar__month-view__weekdays {
+    padding-top: 25px
+  }
 
-.crazyDay{
-  position: relative;
-}
-.crazyDay::after {
-  content: '';
-  position: absolute;
-  border: 1px solid var(--color-green);
-  top: 5px;
-  right: 5px;
-  width: 10px;
-  height: 10px;
-  background-color: red;
-  border-radius: 50%;
-}
+  .react-calendar__month-view__days {
+    text-decoration: none !important;
+    padding-top: 25px
+  }
+  button.react-calendar__tile {
+    padding: 25px
+  }
+
+  div.react-calendar__month-view__weekdays__weekday > abbr {
+    text-decoration: none !important;
+    font-family: var(--font-heading);
+  }
+
+  button.react-calendar__tile > abbr {
+    font-family: var(--font-heading);
+
+  }
+
+  button.react-calendar__tile--now {
+    background-color: var(--color-pink);
+    &:hover{
+      background-color: var(--color-sand);
+
+    }
+  }
+
+  .slowDay::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--color-green);
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-orange);
+    border-radius: 50%;
+  }
+  .busyDay {
+    position: relative;
+  }
+  .busyDay::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--color-green);
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: yellow;
+    border-radius: 50%;
+  }
+
+  .crazyDay{
+    position: relative;
+  }
+  .crazyDay::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--color-green);
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+  }
 
   button {
     color: brown;

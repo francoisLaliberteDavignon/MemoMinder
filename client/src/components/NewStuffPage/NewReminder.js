@@ -1,12 +1,11 @@
 import styled from "styled-components"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import DatePickerButton from "./DatePickerButton";
+import { min } from "date-fns";
 
-import NewSidebar from "./NewSidebar"
-import NewNavBar from './NewNavBar'
-
-const NewReminder = () => {
+const NewReminder = ({getReminders}) => {
 
   const [ postData, setPostData ] = useState(null)
   const [inputValue, setInputValue] = useState('');
@@ -33,6 +32,7 @@ const NewReminder = () => {
     .then(parsedData => {
       setIsSubmitting(false);
       setInputValue('');
+      getReminders();
     })
     .catch((error) => {
       console.log(error)
@@ -41,7 +41,7 @@ const NewReminder = () => {
   }
 
   const handleChange = (e) => {
-    const task = e.target.task;
+    const task = e.target.name;
     const value = e.target.value;
     setPostData(values => ({
       ...values, 
@@ -60,85 +60,83 @@ const NewReminder = () => {
   }
 
   return (
-    <Wrapper className="wrapper">
-      <NewSidebar/>
-      <Right>
-        <NewNavBar/>
-        <Form className="wrapper">
-          <FormContainer>
-            <InputField>
-              <label htmlFor="task">Reminder</label>
-              <Input 
-                name="task"
-                onChange={(e) => handleChange(e)}
-                value={inputValue}/>
-            </InputField>
-            <InputField>
-              <label htmlFor="start">Start</label>
-              <DatePick selected={start} onChange={(date) => handleChangeStart(date)} />
-            </InputField>
-            <Submit
-              onClick={handleSubmit}             
-              disabled={isSubmitting || inputValue.trim() === ''} 
-            >{isSubmitting ? 'Adding...' : 'Add to calendar!'}
-            </Submit>
-          </FormContainer>
-        </Form>
-      </Right>
-    </Wrapper>
+      <Form>
+        <InputField>
+          <Input 
+            name="task"
+            placeholder="What will you forget...?"
+            onChange={(e) => handleChange(e)}
+            value={inputValue}/>
+          <DatePickerWrapper>
+            <DatePick
+              customInput={<DatePickerButton />}
+              placeholderText="What will you forget...?"
+              selected={start}
+              onChange={(date) => handleChangeStart(date)}
+              placeholder="When to remember?"
+              value={start}
+            />
+          </DatePickerWrapper>
+        </InputField>
+        <Submit
+          onClick={handleSubmit}             
+          disabled={isSubmitting || inputValue.trim() === ''} 
+        >{isSubmitting ? 'Adding...' : 'Add to calendar'}
+        </Submit>
+      </Form>
   )
 }
 
 export default NewReminder
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 30px;
-
-`
-
-const Right = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
 const Form = styled.form`
-  display: flex;
-  height: 75vh;
+  margin-top: 10px;
+  font-size: 15px;
+  display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 `;
-
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 50px;
-`
 
 const InputField = styled.div`
   display: flex;
-  width: 360px;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
-  & > div {
-    width: fit-content;
-  }
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  width: 35vw;
+  height: 10vh;
+  margin-top: 10px;
+  padding: 5px 15px;
 `
 
-const Input = styled.input`
+const Input = styled.textarea`
   resize: none;
-  justify-content: flex-start;
+  border: none;
+  outline: none;
+  width: 100%;
+  min-height: 50px;
+  overflow-y: hidden;
+  font-size: 15px;
+  line-height: 20px;
+  height: auto;
+  overflow: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
-const Submit = styled.button`
-  margin-top: 50px;
-  width: 360px;
+const DatePickerWrapper = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `
 
 const DatePick = styled(DatePicker)`
   height: 25px;
+  border: none;
+`
+
+const Submit = styled.button`
+  margin-top: 50px;
 `

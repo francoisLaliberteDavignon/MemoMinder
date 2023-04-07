@@ -197,8 +197,8 @@ const getJournalEntries = async (req, res) => {
 
 	const paramsDate = req.params;
 
+	const client = new MongoClient(MONGO_URI, options)
   try {
-    const client = new MongoClient(MONGO_URI, options)
     await client.connect()
     const db = client.db('MemoMinder')
   
@@ -223,8 +223,8 @@ const postNewJournalEntry = async (req, res) => {
   ...req.body	
 	}
 
+	const client = new MongoClient(MONGO_URI, options)
   try {
-    const client = new MongoClient(MONGO_URI, options)
     await client.connect()
     const db = client.db('MemoMinder')
   
@@ -243,8 +243,8 @@ const postNewJournalEntry = async (req, res) => {
 
 const getAffirmations = async (req, res) => {
 
+	const client = new MongoClient(MONGO_URI, options)
   try {
-    const client = new MongoClient(MONGO_URI, options)
     await client.connect()
     const db = client.db('MemoMinder')
   

@@ -1,10 +1,7 @@
 import styled from "styled-components"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
-import NewSidebar from "./NewSidebar"
-import NewNavBar from './NewNavBar'
-
-const NewBrainer = () => {
+const NewBrainer = ({getBrainDump}) => {
 
   const [ postData, setPostData ] = useState()
   const [inputValue, setInputValue] = useState('');
@@ -35,6 +32,7 @@ const NewBrainer = () => {
     .then(parsedData => {
       setIsSubmitting(false);
       setInputValue('');
+      getBrainDump();
     })
     .catch((error) => {
       console.log(error)
@@ -50,76 +48,84 @@ const NewBrainer = () => {
   }
   
   return (
-    <Wrapper className="wrapper">
-      <NewSidebar/>
-      <Right>
-        <NewNavBar/>
-        <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
-          <Input 
-            name={"task"} 
-            onChange={(e) => handleChange(e)}
-            placeholder="Add something to your brain dump"
-            value={inputValue}   
-          />
-          <Options>
-            <label htmlFor="isImportant">Is this important?</label>
-            <CheckBox 
-              name="isImportant" 
-              type="checkbox"
-              onChange={handleChecked}></CheckBox>
-          </Options>
-          {/* <Options>
-            <label htmlFor="location">Where is this happening?</label>
-            <CheckBox name="location" type="select"></CheckBox>
-          </Options> */}
-          <Submit 
-            type="Submit"
-            disabled={isSubmitting || inputValue.trim() === ''}
-            >{isSubmitting ? 'Adding...' : 'Add to today\'s journal!'}
-          </Submit>
-        </Form>
-      </Right>
-    </Wrapper>
+    <Form onSubmit={(e) => handleSubmit(e)}>
+      <InputField>
+      <Input 
+        name={"task"} 
+        onChange={(e) => handleChange(e)}
+        placeholder="Add something to your brain dump"
+        value={inputValue}   
+      />
+      <Options>
+        <label htmlFor="isImportant">Is this important?</label>
+        <CheckBox 
+          name="isImportant" 
+          type="checkbox"
+          onChange={handleChecked}></CheckBox>
+      </Options>
+      {/* <Options>
+        <label htmlFor="location">Where is this happening?</label>
+        <CheckBox name="location" type="select"></CheckBox>
+      </Options> */}
+      </InputField>
+      <Submit 
+        type="Submit"
+        disabled={isSubmitting || inputValue.trim() === ''}
+        >{isSubmitting ? 'Adding...' : 'Add to today\'s journal!'}
+      </Submit>
+    </Form>
   )
 }
 
 export default NewBrainer
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 30px;
-`
-
-const Right = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 
 const Form = styled.form`
-  display: flex;
-  height: 75vh;
+  margin-top: 10px;
+  font-size: 15px;
+  display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  margin-left: 4px;
+
 `;
+
+const InputField = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  width: 35vw;
+  height: 10vh;
+  margin-top: 10px;
+  padding: 5px 15px;
+`
 
 const Input = styled.textarea`
   resize: none;
-  height: 25vh;
-  width: 560px;
-  justify-content: flex-start;
-  margin: 30px;
+  border: none;
+  outline: none;
+  width: 100%;
+  min-height: 50px;
+  overflow-y: hidden;
+  font-size: 15px;
+  line-height: 20px;
+  height: auto;
+  overflow: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Options = styled.div`
-  padding-bottom: 15px;
+  display: flex;
+  align-items: flex-end;
 `
 
-const CheckBox = styled.input`
-
-`
+const CheckBox = styled.input``
 
 const Submit = styled.button`
-  width: 360px;
+  margin-top: 50px;
 `
