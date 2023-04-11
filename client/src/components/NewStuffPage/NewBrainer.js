@@ -35,7 +35,7 @@ const NewBrainer = ({getBrainDump}) => {
       getBrainDump();
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error.stack)
       setIsSubmitting(false);
     });  
   }

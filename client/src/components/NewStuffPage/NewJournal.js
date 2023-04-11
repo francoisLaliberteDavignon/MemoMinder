@@ -1,8 +1,5 @@
 import styled from "styled-components"
-import { useState, useEffect } from "react"
-
-import NewSidebar from "./NewSidebar"
-import NewNavBar from './NewNavBar'
+import { useState } from "react"
 
 const NewJournal = () => {
 
@@ -45,9 +42,7 @@ const NewJournal = () => {
 
   return (
     <Wrapper className="wrapper">
-      <NewSidebar/>
       <Right>
-        <NewNavBar/>
         <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
           <Input 
             placeholder="Add a new journal entry..." 

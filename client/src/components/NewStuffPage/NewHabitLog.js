@@ -1,8 +1,5 @@
 import styled from "styled-components"
-import { useState, useEffect } from "react"
-
-import NewSidebar from "./NewSidebar"
-import NewNavBar from './NewNavBar'
+import { useState } from "react"
 
 const NewHabitLog = () => {
 
@@ -22,9 +19,7 @@ const NewHabitLog = () => {
 
   return (
     <Wrapper>
-      <NewSidebar/>
       <Right>
-        <NewNavBar/>
         <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
           <Input name={""} onChange={(e) => handleChange(e)}/>
           <Submit onClick={handleSubmit}>Add to today's journal! </Submit>

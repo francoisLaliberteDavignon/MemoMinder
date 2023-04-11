@@ -3,7 +3,6 @@ import { useState } from "react"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePickerButton from "./DatePickerButton";
-import { min } from "date-fns";
 
 const NewReminder = ({getReminders}) => {
 
