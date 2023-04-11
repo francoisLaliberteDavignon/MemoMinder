@@ -1,8 +1,11 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
+import ClockLoader from "react-spinners/ClockLoader"
+
+
+import { DateContext } from '../../DateContext'
 import Reminder from './Reminder'
 import NewReminder from '../NewStuffPage/NewReminder'
-import { DateContext } from '../../DateContext'
-import { useContext } from 'react'
 
 const DailySpread = ({getReminders, dailyReminders}) => {
 
@@ -11,7 +14,7 @@ const DailySpread = ({getReminders, dailyReminders}) => {
   return (
     <Wrapper>
       <Title>Reminders - {!date ? paramsToday : date}</Title>
-      {!dailyReminders? <></> :
+      {!dailyReminders? <Loading><ClockLoader/></Loading> :
       dailyReminders.map((reminder) => {
         return <Reminder 
         reminder={reminder} 
@@ -36,4 +39,12 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h6`
+`
+
+const Loading = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `

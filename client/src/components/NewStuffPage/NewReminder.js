@@ -3,7 +3,6 @@ import { useState } from "react"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePickerButton from "./DatePickerButton";
-import { min } from "date-fns";
 
 const NewReminder = ({getReminders}) => {
 
@@ -11,11 +10,13 @@ const NewReminder = ({getReminders}) => {
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [ start, setStart ] = useState(new Date())
-  const [ end, setEnd ] = useState(new Date())
+
+  // This handles the submission of a reminder through the form which requires a
+  // text input and a date.
 
   const handleSubmit = (e) => {
-    e.preventDefault();
 
+    e.preventDefault();
     setIsSubmitting(true);
 
     fetch("/newReminder", {
@@ -47,7 +48,6 @@ const NewReminder = ({getReminders}) => {
       ...values, 
       [task]: value, 
       start: start.toISOString().substring(0, 10), 
-      end: end.toISOString().substring(0, 10)
     }))
     setInputValue(value);
   }
@@ -139,4 +139,5 @@ const DatePick = styled(DatePicker)`
 
 const Submit = styled.button`
   margin-top: 50px;
+  width: 225px;
 `

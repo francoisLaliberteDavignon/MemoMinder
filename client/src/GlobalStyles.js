@@ -20,19 +20,14 @@ const GlobalStyles = createGlobalStyle`
 @media (max-width: 1024px) { 
   .wrapper{
     flex-direction: column;
+    
   }
-  .after_media_query{
+  .after_media_query {
+    margin-top: 50px;
+    align-items: center;
     width: 100%;
-  } 
-} 
-
-@media (min-width: 1025px) { 
-  .wrapper{
-    flex-direction: row;
   }
-
 } 
-
 
   /*****Reset styles *****/
   *,
@@ -100,7 +95,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h6 {
-    font-size: 16px;
+    font-size: 18px;
     margin: 15px 0;
   }
 
@@ -129,9 +124,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-heading);
     padding: 10px 40px;
     transition: all 0.3s ease;
-    border: 1px lightgray solid;
     &:hover {
-      box-shadow:16px -16px var(--color-orange);
+      box-shadow: 8px 8px var(--color-orange);
     }
   }
 
@@ -144,7 +138,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .navigation {
-    border: 1px lightgray solid;
     border-radius: 15px;
     padding: 10px;
     background-color: var(--color-green);
@@ -154,7 +147,7 @@ const GlobalStyles = createGlobalStyle`
     text-align: center;
       &:hover{
       overflow: hidden;
-      box-shadow:   8px -8px var(--color-orange);
+      box-shadow: 8px 8px var(--color-orange);
     }
   &.active{
       box-shadow:   16px -16px var(--color-orange);
@@ -191,8 +184,7 @@ const GlobalStyles = createGlobalStyle`
   input {
     font-size: 15px;
     border: none;
-
-
+    font-family: var(--font-body);
     &:focus{
     outline: none;
     }
@@ -204,6 +196,8 @@ const GlobalStyles = createGlobalStyle`
     background: #555;
     position: relative;
     border-radius: 5px;
+    &:checked {
+    }
   }
 
   textarea {
@@ -224,6 +218,15 @@ block-size: fit-content;
   .icon {
     font-size: 20px;
     margin-left: 10px;
+  }
+
+  .footIcon {
+    font-size: 25px;
+    margin: 0 12px;
+    color: var(--color-green);
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 
   .icon :hover {

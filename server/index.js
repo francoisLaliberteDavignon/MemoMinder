@@ -7,7 +7,6 @@ const port = 8888;
 
 const {
   postNewUser,
-  postNewEntry,
   getBrainDump,
   postNewBrainer,
   scheduleBrainer,
@@ -33,7 +32,6 @@ express()
 
   // ---------------------------------
   .post('/newUser', postNewUser)
-  .post('/newEntry', postNewEntry)
 
   .get('/getBrainDump', getBrainDump)
   .post('/newBrainer', postNewBrainer)

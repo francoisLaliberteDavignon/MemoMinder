@@ -1,8 +1,5 @@
 import styled from "styled-components"
-import { useState, useEffect } from "react"
-
-import NewSidebar from "./NewSidebar"
-import NewNavBar from './NewNavBar'
+import { useState } from "react"
 
 const NewAffirmation = () => {
 
@@ -37,9 +34,7 @@ const NewAffirmation = () => {
 
   return (
     <Wrapper>
-      <NewSidebar/>
       <Right>
-        <NewNavBar/>
         <Form onSubmit={(e) => handleSubmit(e)} className='wrapper'>
           <Input 
             placeholder="This will be shown randomly on your Homepage!"

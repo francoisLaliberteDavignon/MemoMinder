@@ -1,10 +1,13 @@
 import styled from "styled-components"
-import DailySpread from "../HomePage/DailySpread"
-import DailyEntries from "./DailyEntries"
+
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
+
 import Header from "../../Header"
 import Banner from "../../Banner"
+import DailySpread from "../HomePage/DailySpread"
+import DailyEntries from "./DailyEntries"
+import Footer from "../../Footer"
 
 const DailyView = () => {
   
@@ -29,11 +32,13 @@ const DailyView = () => {
     <Header/>
     <Banner paramsToday={date}/>
     <Main >
-      <DailyEntries/>
+      <DailyEntries date={date}/>
       <DailySpread           
         getReminders={getReminders} 
-        dailyReminders={dailyReminders}/>
+        dailyReminders={dailyReminders}
+        />
     </Main>
+    <Footer/>
     </>
   )
 }
@@ -45,4 +50,5 @@ const Main = styled.div`
   display:flex;
   justify-content: space-evenly;
   flex-direction: row;
+  height: 59.5vh;
 `

@@ -43,31 +43,6 @@ const postNewUser = async (req, res) => {
 
 /***********************************************************************/
 
-const postNewEntry = async (req, res) => {
-
-	const entry = {
-    _id: uuidv4(),
-  ...req.body	
-	}
-
-	const client = new MongoClient(MONGO_URI, options)
-  try {
-    await client.connect()
-    const db = client.db('MemoMinder')
-  
-    const insertEntry = await db.collection('entries').insertOne(entry)	
-		insertEntry ?
-			res.status(200).json({status:200, message: "entry added", data: entry}) :
-			res.status(400).json({status:400, message: "'Was an error with the entry", data: entry})
-		client.close()
-  } catch (error) {
-		res.status(500).json({status:500, message: "something went wrong!"})
-		client.close()
-	}
-}
-
-/***********************************************************************/
-
 const getBrainDump = async (req, res) => {
 
 	const client = new MongoClient(MONGO_URI, options)
@@ -116,8 +91,6 @@ const scheduleBrainer = async (req, res) => {
 	const scheduledBrainer = {
   ...req.body	
 	}
-
-	console.log('ligne 120', req.body)
 
 	const client = new MongoClient(MONGO_URI, options)
   try {
@@ -202,7 +175,7 @@ const getJournalEntries = async (req, res) => {
     await client.connect()
     const db = client.db('MemoMinder')
   
-    const journal = await db.collection('journalEntries').find({dateOfEntry: paramsDate.date}).toArray()	
+    const journal = await db.collection('journalEntries').find({date: paramsDate.date}).toArray()	
 		journal ?
 			res.status(200).json({status:200, message: `Here are all the journal entries from ${paramsDate.date}`, data: journal}) :
 			res.status(400).json({status:400, message: "Could'nt find the journal", data: journal})
@@ -378,7 +351,6 @@ const deleteReminder = async (req, res) => {
 
 module.exports = { 
 	postNewUser, 
-	postNewEntry, 
 	postNewBrainer,
 	scheduleBrainer,
 	patchBrainer, 

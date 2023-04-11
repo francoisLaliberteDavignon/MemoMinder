@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { useState, useEffect } from "react";
-import isSameDay from "date-fns/isSameDay";
+
 import Calendar from "react-calendar"
+import isSameDay from "date-fns/isSameDay";
 import 'react-calendar/dist/Calendar.css';
 
 const Calendrier = ({handleClickDay}) => {

@@ -10,6 +10,9 @@ const Login = () => {
 
   return (
     <Wrapper>
+
+    {/* The header is simple and not imported as a separate component */}
+
       <LoginHeader>
         <div>
           <Logo >Logo here!</Logo>
@@ -17,6 +20,10 @@ const Login = () => {
         </div>
         <LoginButton onClick={() => loginWithRedirect()}>Login</LoginButton>
       </LoginHeader>
+    
+    {/* The main page showcases a short description and a simple representation 
+        of the site */}
+
       <Main className="main">
         <Left>
           <h4>MemoMinder</h4>
@@ -25,9 +32,9 @@ const Login = () => {
           <GetStarted onClick={() => loginWithRedirect()}>Get Started</GetStarted>
         </Left>
         <Right>
-          <Container>***
+          <Container>
             <Row>
-            <Container2>***</Container2>
+            <Container2></Container2>
             </Row>
             <Row>
               <Container3><CalendarLogo/></Container3>

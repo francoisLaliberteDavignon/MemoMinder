@@ -50,28 +50,24 @@ const NewBrainer = ({getBrainDump}) => {
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
       <InputField>
-      <Input 
-        name={"task"} 
-        onChange={(e) => handleChange(e)}
-        placeholder="Add something to your brain dump"
-        value={inputValue}   
-      />
-      <Options>
-        <label htmlFor="isImportant">Is this important?</label>
-        <CheckBox 
-          name="isImportant" 
-          type="checkbox"
-          onChange={handleChecked}></CheckBox>
-      </Options>
-      {/* <Options>
-        <label htmlFor="location">Where is this happening?</label>
-        <CheckBox name="location" type="select"></CheckBox>
-      </Options> */}
+        <Input 
+          name={"task"} 
+          onChange={(e) => handleChange(e)}
+          placeholder="Add something to your brain dump"
+          value={inputValue}   
+        />
+        <Options>
+          <label htmlFor="isImportant">Is this important?</label>
+          <CheckBox 
+            name="isImportant" 
+            type="checkbox"
+            onChange={handleChecked}></CheckBox>
+        </Options>
       </InputField>
       <Submit 
         type="Submit"
         disabled={isSubmitting || inputValue.trim() === ''}
-        >{isSubmitting ? 'Adding...' : 'Add to today\'s journal!'}
+        >{isSubmitting ? 'Adding...' : 'Add to your brain dump!'}
       </Submit>
     </Form>
   )
@@ -87,7 +83,7 @@ const Form = styled.form`
   flex-direction: column;
   align-items: flex-end;
   margin-left: 4px;
-
+  transition: 750ms;
 `;
 
 const InputField = styled.div`
@@ -128,4 +124,5 @@ const CheckBox = styled.input``
 
 const Submit = styled.button`
   margin-top: 50px;
+  width: 327px;
 `

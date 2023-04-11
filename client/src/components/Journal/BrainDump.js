@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
+import ClockLoader from "react-spinners/ClockLoader"
 
 import Brainer from "./Brainer"
 import NewBrainer from "../NewStuffPage/NewBrainer"
@@ -27,7 +28,7 @@ const BrainDump = ({getReminders}) => {
   return (
     <Wrapper>
       <Title>BRAIN DUMP</Title>
-      {brainDump.length === 0 ? <>loading</>:
+      {brainDump.length === 0 ? <Loading><ClockLoader/></Loading>:
       <>
         {brainDump.map((brainer, index) => {
           if (isBeingScheduled === index || isBeingScheduled === null) {
@@ -46,8 +47,8 @@ const BrainDump = ({getReminders}) => {
           return null
         }
       })}
-      <NewBrainer getBrainDump={getBrainDump}/>
     </>}
+      <NewBrainer getBrainDump={getBrainDump}/>
   </Wrapper>
   )
 }
@@ -65,6 +66,13 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h6`
-    margin-left: 4px;
+  margin-left: 4px;
+`
 
+const Loading = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `

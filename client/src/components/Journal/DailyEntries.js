@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
 import styled from "styled-components"
+import PulseLoader from 'react-spinners/PulseLoader'
+
 import Entry from "./Entry"
 
 
-const DailyEntries = () => {
-
-  const paramsDate = useParams()
+const DailyEntries = ({date}) => {
 
   const [ journalEntries, setJournalEntries] = useState([]) 
 
@@ -19,7 +18,7 @@ const DailyEntries = () => {
   },[])
 
   const reFetchJournal = () => {
-    fetch(`/journalEntries/${paramsDate.date}`)
+    fetch(`/journalEntries/${date}`)
     .then(res => res.json())
     .then(parsedData => {
       setJournalEntries(parsedData.data)
@@ -41,6 +40,7 @@ const DailyEntries = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        date: date,
         ...postData
       })
     })
@@ -66,9 +66,9 @@ const DailyEntries = () => {
   return (
     <Wrapper>
       <Title>Journal log</Title>
-      {journalEntries.length === 0 ? <>No entry at this date</> :
+      {journalEntries.length === 0 ? <Loading><PulseLoader size={5}/></Loading> :
       <ul>
-  {    journalEntries.map((entry) => {
+      {journalEntries.map((entry) => {
         return <Entry entry={entry} key={entry._id} />
       })}
       </ul>}
@@ -102,6 +102,13 @@ const Wrapper = styled.div`
   overflow-y: scroll;
 `
 
+const Loading = styled.div`
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  min-height: 75px;
+`
+
 const Title = styled.h6`
   padding-top: none;
   margin-bottom: 15px;
@@ -125,5 +132,5 @@ const Right = styled.div`
 `
 
 const Submit = styled.button`
-  width: 13vw;
+  width: 17vw;
 `
