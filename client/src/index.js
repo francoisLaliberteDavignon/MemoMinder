@@ -6,13 +6,12 @@ import { UserProvider } from "./UserContext";
 import { DateProvider } from './DateContext';
 
 const { REACT_APP_AUTH0_DOMAIN, REACT_APP_AUTH0_CLIENT_ID } = process.env; 
+console.log( REACT_APP_AUTH0_CLIENT_ID, REACT_APP_AUTH0_DOMAIN)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
       <Auth0Provider
-      // domain="dev-vveth7rxkscnryht.us.auth0.com"
-      // clientId="6qCPTQ5TQsHEF7r2TXlENao66qrzxIqX"
       domain={REACT_APP_AUTH0_DOMAIN}
       clientId={REACT_APP_AUTH0_CLIENT_ID}
       authorizationParams={{redirect_uri: window.location.origin+"/homepage"}}>
