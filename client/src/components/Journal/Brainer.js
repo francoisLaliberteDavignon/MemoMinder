@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import { FcHighPriority, FcLowPriority } from "react-icons/fc";
 import { FiAlertTriangle } from "react-icons/fi";
 import { BsClock } from "react-icons/bs";
-import { TbSquareDot, TbCheck } from "react-icons/tb";
+import { TbCheck } from "react-icons/tb";
 import { AiOutlineSend } from "react-icons/ai";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
+import DatePickerButton from "../NewStuffPage/DatePickerButton";
 
 import "react-datepicker/dist/react-datepicker.css"; 
 
@@ -24,6 +24,8 @@ const Brainer = ({
 
   const [ postData, setPostData ] = useState(null)
   const [ start, setStart ] = useState(new Date())
+
+  // This is the function that handles setting an existing brainer to "important".
 
   const handleImportance = () => {
 
@@ -46,6 +48,9 @@ const Brainer = ({
     })
   }
 
+  // These are the functions that handles picking a date to shedule a brainer, and
+  // send it to the "reminders" collection.
+
   const handleChangeStart = (date) => {
     setStart(date)
     setPostData(values => ({...values, 
@@ -62,6 +67,7 @@ const Brainer = ({
   }
 
   const handleScheduled = () => {
+
     setIsDeleted(true)
 
     fetch(`/scheduleBrainer/${brainer._id}`, {
@@ -79,8 +85,11 @@ const Brainer = ({
     .then(() => {
       getBrainDump();
       getReminders();
+      setIsBeingScheduled(null);
     })
   }
+
+  // This is the function that handles the actions that happen when a brainer is completed.
 
   const handleDelete = () => {
     setIsDeleted(true)
@@ -107,17 +116,19 @@ const Brainer = ({
         <p>{brainer.task}</p> 
       </Item>
       <ToSchedule>
+      
+      </ToSchedule>
+      <Options>
       {isBeingScheduled === null ? <></> :
-      <SendToSchedule>
+      <>
         <DatePick
+          customInput={<DatePickerButton/>}
           selected={start} 
           onChange={(date) => handleChangeStart(date)}/>
         <Send 
           onClick={handleScheduled}
           className="icon"/>
-      </SendToSchedule>}
-      </ToSchedule>
-      <Options>
+      </>}
         <Importance onClick={handleImportance} className={ isImportant? "icon isImportant" : "icon"}/>
         <Schedule 
           className="icon" 
@@ -164,12 +175,6 @@ const Item = styled.div`
 const ToSchedule = styled.div``
 
 const DatePick = styled(DatePicker)``
-
-const SendToSchedule = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
 
 const Send = styled(AiOutlineSend)`
   margin-left: 10px;

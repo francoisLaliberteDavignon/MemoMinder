@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { TbCheck } from "react-icons/tb";
 import { useState } from 'react';
+import { TbCheck } from "react-icons/tb";
 
 const Reminder = ({reminder, getReminders}) => {
 
@@ -41,13 +41,13 @@ const Reminder = ({reminder, getReminders}) => {
   )
 }
 
-
 export default Reminder
 
 const Item = styled.div`
   border: 1px solid lightgray;
   border-radius: 15px;
   width: 35vw;
+  height: 50px;
   margin-top: 10px;
   padding: 5px 15px;
   display: flex;

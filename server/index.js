@@ -3,11 +3,10 @@
 // import the needed node_modules.
 const express = require("express");
 const morgan = require("morgan");
-const port = 8888
+const port = 8888;
 
 const {
   postNewUser,
-  postNewEntry,
   getBrainDump,
   postNewBrainer,
   scheduleBrainer,
@@ -33,7 +32,6 @@ express()
 
   // ---------------------------------
   .post('/newUser', postNewUser)
-  .post('/newEntry', postNewEntry)
 
   .get('/getBrainDump', getBrainDump)
   .post('/newBrainer', postNewBrainer)

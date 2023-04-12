@@ -10,11 +10,13 @@ const NewReminder = ({getReminders}) => {
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [ start, setStart ] = useState(new Date())
-  const [ end, setEnd ] = useState(new Date())
+
+  // This handles the submission of a reminder through the form which requires a
+  // text input and a date provided by datePicker
 
   const handleSubmit = (e) => {
-    e.preventDefault();
 
+    e.preventDefault();
     setIsSubmitting(true);
 
     fetch("/newReminder", {
@@ -46,7 +48,6 @@ const NewReminder = ({getReminders}) => {
       ...values, 
       [task]: value, 
       start: start.toISOString().substring(0, 10), 
-      end: end.toISOString().substring(0, 10)
     }))
     setInputValue(value);
   }
@@ -63,7 +64,7 @@ const NewReminder = ({getReminders}) => {
         <InputField>
           <Input 
             name="task"
-            placeholder="What will you forget...?"
+            placeholder="What do you want to schedule...?"
             onChange={(e) => handleChange(e)}
             value={inputValue}/>
           <DatePickerWrapper>
@@ -138,4 +139,5 @@ const DatePick = styled(DatePicker)`
 
 const Submit = styled.button`
   margin-top: 50px;
+  width: 225px;
 `

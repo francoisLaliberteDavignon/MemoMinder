@@ -5,7 +5,7 @@ export const DateContext = createContext(null)
 export const DateProvider = ({children}) => {
   
   const [ today, setToday ] = useState(new Date(Date.now()))
-  const [ date, setDate ] = useState();
+  const [ date, setDate ] = useState(null);
 
   let paramsToday = today.toISOString().substring(0, 10)
 

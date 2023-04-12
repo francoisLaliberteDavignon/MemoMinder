@@ -20,19 +20,14 @@ const GlobalStyles = createGlobalStyle`
 @media (max-width: 1024px) { 
   .wrapper{
     flex-direction: column;
+    
   }
-  .after_media_query{
+  .after_media_query {
+    margin-top: 50px;
+    align-items: center;
     width: 100%;
-  } 
-} 
-
-@media (min-width: 1025px) { 
-  .wrapper{
-    flex-direction: row;
   }
-
 } 
-
 
   /*****Reset styles *****/
   *,
@@ -58,8 +53,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.5;
-    scrollbar-width: thin;
-    scrollbar-color:  var(--color-border) var(--color-green); 
+    scrollbar-width: thin ;
+    scrollbar-color:  var(--color-pink) var(--color-green); 
   }
 
   .main {
@@ -100,7 +95,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h6 {
-    font-size: 16px;
+    font-size: 18px;
     margin: 15px 0;
   }
 
@@ -119,7 +114,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-body);
   }
 
-  /* Buttons */
+  /******  Buttons  ******/
   button {
     background-color: var(--color-pink);
     border-radius: 15px;
@@ -129,13 +124,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-heading);
     padding: 10px 40px;
     transition: all 0.3s ease;
-    border: 1px lightgray solid;
     &:hover {
-      box-shadow:16px -16px var(--color-orange);
+      box-shadow: 8px 8px var(--color-orange);
     }
   }
 
-  /* Navigation */
+  /****** Navigation ******/
   nav {
     display: flex;
     justify-content: space-between;
@@ -144,7 +138,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .navigation {
-    border: 1px lightgray solid;
     border-radius: 15px;
     padding: 10px;
     background-color: var(--color-green);
@@ -154,7 +147,7 @@ const GlobalStyles = createGlobalStyle`
     text-align: center;
       &:hover{
       overflow: hidden;
-      box-shadow:   8px -8px var(--color-orange);
+      box-shadow: 8px 8px var(--color-orange);
     }
   &.active{
       box-shadow:   16px -16px var(--color-orange);
@@ -181,7 +174,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
   }
 
-  // Forms and submissions
+  /****** Forms and submissions ******/
 
   label {
     font-family: var(--font-heading);
@@ -191,8 +184,7 @@ const GlobalStyles = createGlobalStyle`
   input {
     font-size: 15px;
     border: none;
-
-
+    font-family: var(--font-body);
     &:focus{
     outline: none;
     }
@@ -204,6 +196,8 @@ const GlobalStyles = createGlobalStyle`
     background: #555;
     position: relative;
     border-radius: 5px;
+    &:checked {
+    }
   }
 
   textarea {
@@ -217,8 +211,7 @@ const GlobalStyles = createGlobalStyle`
   .react-datepicker-wrapper {
     width: fit-content;
     height: fit-content;
-
-block-size: fit-content;
+    block-size: fit-content;
   }
 
   .icon {
@@ -226,11 +219,21 @@ block-size: fit-content;
     margin-left: 10px;
   }
 
+  .footIcon {
+    font-size: 25px;
+    margin: 0 12px;
+    color: var(--color-green);
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
   .icon :hover {
     border-radius: 50%;
   }
 
-  // calendar
+  /****** calendar ******/
+  
   .calendar {
     max-width: 100%;
     font-size: 25px;

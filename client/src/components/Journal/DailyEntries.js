@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
 import styled from "styled-components"
+import PulseLoader from 'react-spinners/PulseLoader'
+
 import Entry from "./Entry"
 
-
-const DailyEntries = () => {
-
-  const paramsDate = useParams()
+const DailyEntries = ({date}) => {
 
   const [ journalEntries, setJournalEntries] = useState([]) 
 
@@ -14,12 +12,14 @@ const DailyEntries = () => {
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // This manages the journal entries for every date that is picked in the calendar.
+
   useEffect(() => {
     reFetchJournal();
   },[])
 
   const reFetchJournal = () => {
-    fetch(`/journalEntries/${paramsDate.date}`)
+    fetch(`/journalEntries/${date}`)
     .then(res => res.json())
     .then(parsedData => {
       setJournalEntries(parsedData.data)
@@ -28,6 +28,8 @@ const DailyEntries = () => {
       console.log(error)
     })
   }
+
+  // This manages the POSTing of a new journal log. 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +43,7 @@ const DailyEntries = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        date: date,
         ...postData
       })
     })
@@ -66,9 +69,9 @@ const DailyEntries = () => {
   return (
     <Wrapper>
       <Title>Journal log</Title>
-      {journalEntries.length === 0 ? <>No entry at this date</> :
+      {journalEntries.length === 0 ? <Loading><PulseLoader size={5}/></Loading> :
       <ul>
-  {    journalEntries.map((entry) => {
+      {journalEntries.map((entry) => {
         return <Entry entry={entry} key={entry._id} />
       })}
       </ul>}
@@ -92,7 +95,6 @@ const DailyEntries = () => {
 
 export default DailyEntries
 
-
 const Wrapper = styled.div`
   width: 40%;
   margin-left: 5vw;
@@ -100,6 +102,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   overflow-y: scroll;
+`
+
+const Loading = styled.div`
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  min-height: 75px;
 `
 
 const Title = styled.h6`
@@ -125,5 +134,5 @@ const Right = styled.div`
 `
 
 const Submit = styled.button`
-  width: 13vw;
+  width: 17vw;
 `

@@ -2,6 +2,10 @@ import { forwardRef } from 'react'
 import styled from 'styled-components';
 
 const DatePickerButton = forwardRef(({ value, onClick }, ref) => {
+
+  // This is a simple component used for adding styling and content 
+  // to the datePicker button
+
   const handleClick = (e) => {
     e.preventDefault();
     onClick(e);
@@ -18,5 +22,6 @@ const DatePickerButton = forwardRef(({ value, onClick }, ref) => {
 export default DatePickerButton
 
 const Button = styled.button`
+  
 `
 
