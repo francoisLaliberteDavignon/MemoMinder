@@ -46,6 +46,7 @@ const Header = () => {
     .then(parsedData => {
       setIsSubmitting(false);
       setInputValue('');
+      setIsShowingNewAff(false)
     })
     .catch((error) => {
       console.log(error)
@@ -191,6 +192,7 @@ const AffInput = styled.input`
 const Submit = styled.button`
   margin-right: 15px;
   height: 42px;
+  width: 193px;
   padding-left: 10px;
   padding-right: 10px;
   &:hover {
@@ -211,7 +213,8 @@ const ProfilePic = styled.img`
 `
 
 const Logout = styled.button`
-background-color: var(--color-green);
+  border: none;
+  background-color: var(--color-green);
   margin-right: 15px;
   transition: 0.45s ease-in-out;
   opacity : ${(props) => props.hover ? "1" : "0"};

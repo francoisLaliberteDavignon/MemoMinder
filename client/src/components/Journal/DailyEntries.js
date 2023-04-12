@@ -4,7 +4,6 @@ import PulseLoader from 'react-spinners/PulseLoader'
 
 import Entry from "./Entry"
 
-
 const DailyEntries = ({date}) => {
 
   const [ journalEntries, setJournalEntries] = useState([]) 
@@ -12,6 +11,8 @@ const DailyEntries = ({date}) => {
   const [ postData, setPostData ] = useState(null)
   const [inputValue, setInputValue] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // This manages the journal entries for every date that is picked in the calendar.
 
   useEffect(() => {
     reFetchJournal();
@@ -27,6 +28,8 @@ const DailyEntries = ({date}) => {
       console.log(error)
     })
   }
+
+  // This manages the POSTing of a new journal log. 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -91,7 +94,6 @@ const DailyEntries = ({date}) => {
 }
 
 export default DailyEntries
-
 
 const Wrapper = styled.div`
   width: 40%;

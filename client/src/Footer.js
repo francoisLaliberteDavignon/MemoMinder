@@ -4,6 +4,9 @@ import { SlSocialFacebook, SlSocialGithub, SlSocialLinkedin } from 'react-icons/
 import { TbBrandGmail } from 'react-icons/tb'
 
 const Footer = () => {
+
+  // This is a simple footer that provides navigation links to social networks for the user
+
   return (
     <Wrapper>
       <Social>
@@ -19,9 +22,9 @@ const Footer = () => {
 export default Footer
 
 const Wrapper = styled.div`
-  height: 9.5vh;
+  height: 7.8vh;
   max-height: 10vh;
-  padding: 0 15px;
+  padding: 0 12px;
   width: 100%;
   display: flex;
   justify-content: center;

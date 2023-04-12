@@ -10,6 +10,9 @@ import DailyEntries from "./DailyEntries"
 import Footer from "../../Footer"
 
 const DailyView = () => {
+
+  // This is the second main page that renders both the journal log (daily entries) and 
+  // the reminders for this specific date.
   
   const { date } = useParams();
   const [ dailyReminders, setDailyReminders ] = useState(null)
@@ -35,8 +38,7 @@ const DailyView = () => {
       <DailyEntries date={date}/>
       <DailySpread           
         getReminders={getReminders} 
-        dailyReminders={dailyReminders}
-        />
+        dailyReminders={dailyReminders}/>
     </Main>
     <Footer/>
     </>

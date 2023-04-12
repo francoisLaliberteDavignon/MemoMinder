@@ -12,7 +12,7 @@ const NewReminder = ({getReminders}) => {
   const [ start, setStart ] = useState(new Date())
 
   // This handles the submission of a reminder through the form which requires a
-  // text input and a date.
+  // text input and a date provided by datePicker
 
   const handleSubmit = (e) => {
 
@@ -64,7 +64,7 @@ const NewReminder = ({getReminders}) => {
         <InputField>
           <Input 
             name="task"
-            placeholder="What will you forget...?"
+            placeholder="What do you want to schedule...?"
             onChange={(e) => handleChange(e)}
             value={inputValue}/>
           <DatePickerWrapper>

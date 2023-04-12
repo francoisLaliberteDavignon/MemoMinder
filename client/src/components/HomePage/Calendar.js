@@ -31,11 +31,11 @@ const Calendrier = ({handleClickDay}) => {
       })
     if (sum === 0) {
       return '';
-    } else if (sum >= 1 && sum <= 3) {
+    } else if (sum >= 1 && sum <= 2) {
       return 'slowDay';
-    } else if (sum >= 4 && sum <= 7) {
+    } else if (sum >= 3 && sum <= 5) {
       return 'busyDay';
-    } else if (sum >= 8 && sum <= 12) {
+    } else if (sum >= 6 && sum <= 12) {
       return 'crazyDay';
     }
   }
@@ -107,12 +107,11 @@ const Planner = styled(Calendar)`
   .slowDay::after {
     content: '';
     position: absolute;
-    border: 1px solid var(--color-green);
     top: 5px;
     right: 5px;
     width: 10px;
     height: 10px;
-    background-color: var(--color-orange);
+    background-color: var(--color-green);
     border-radius: 50%;
   }
   .busyDay {
@@ -121,7 +120,6 @@ const Planner = styled(Calendar)`
   .busyDay::after {
     content: '';
     position: absolute;
-    border: 1px solid var(--color-green);
     top: 5px;
     right: 5px;
     width: 10px;
@@ -136,7 +134,7 @@ const Planner = styled(Calendar)`
   .crazyDay::after {
     content: '';
     position: absolute;
-    border: 1px solid var(--color-green);
+    border: 1px solid var(--color-orange);
     top: 5px;
     right: 5px;
     width: 10px;
@@ -147,6 +145,5 @@ const Planner = styled(Calendar)`
 
   button {
     color: brown;
-
   }
 `

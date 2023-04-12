@@ -53,8 +53,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.5;
-    scrollbar-width: thin;
-    scrollbar-color:  var(--color-border) var(--color-green); 
+    scrollbar-width: thin ;
+    scrollbar-color:  var(--color-pink) var(--color-green); 
   }
 
   .main {
@@ -114,7 +114,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-body);
   }
 
-  /* Buttons */
+  /******  Buttons  ******/
   button {
     background-color: var(--color-pink);
     border-radius: 15px;
@@ -129,7 +129,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  /* Navigation */
+  /****** Navigation ******/
   nav {
     display: flex;
     justify-content: space-between;
@@ -174,7 +174,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
   }
 
-  // Forms and submissions
+  /****** Forms and submissions ******/
 
   label {
     font-family: var(--font-heading);
@@ -211,8 +211,7 @@ const GlobalStyles = createGlobalStyle`
   .react-datepicker-wrapper {
     width: fit-content;
     height: fit-content;
-
-block-size: fit-content;
+    block-size: fit-content;
   }
 
   .icon {
@@ -233,7 +232,8 @@ block-size: fit-content;
     border-radius: 50%;
   }
 
-  // calendar
+  /****** calendar ******/
+  
   .calendar {
     max-width: 100%;
     font-size: 25px;

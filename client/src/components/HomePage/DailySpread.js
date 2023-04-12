@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 import ClockLoader from "react-spinners/ClockLoader"
 
-
 import { DateContext } from '../../DateContext'
 import Reminder from './Reminder'
 import NewReminder from '../NewStuffPage/NewReminder'

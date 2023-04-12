@@ -8,9 +8,14 @@ const NewBrainer = ({getBrainDump}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isImportant, setIsImportant ] = useState(false)
 
+  // This handles toggling the styling when a brainer is checked as important
+
   const handleChecked = () => {
     setIsImportant(!isImportant)
   }
+
+  // This handles the POSTing of the new brainer when the form is submitted
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -123,6 +128,7 @@ const Options = styled.div`
 const CheckBox = styled.input``
 
 const Submit = styled.button`
+border: none;
   margin-top: 50px;
   width: 327px;
 `

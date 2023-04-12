@@ -95,11 +95,13 @@ const Homepage = () => {
 export default Homepage
 
 const Main = styled.div`
-  margin: 30px;
+  margin: 30px 30px 0 30px;
+  height: 65vh;
   display:flex;
   justify-content: space-around;
   flex-direction: row;
 `
+
 const Left = styled.div`
     width:40%;
     display: flex;
@@ -108,6 +110,7 @@ const Left = styled.div`
 
 const NavDiv = styled.div`
   display: flex;
+  padding-right: 50px;
   justify-content: space-evenly;
   margin-top: 12px;
   margin-bottom: 48px;
@@ -115,12 +118,15 @@ const NavDiv = styled.div`
 
 const NavButton = styled.button`
   background: none;
+  width: 256px;
   font-weight: bold;
-  border: none;
+  border-radius: 0;
+  border:4px solid transparent;
   &:hover{
-    box-shadow: 4px 4px var(--color-green)
+    border-bottom: 4px solid black;
   }
   &.active{
-    box-shadow: 4px 4px black
+    border-bottom: 4px solid black;
+    border-radius: none;
   }
 `

@@ -4,17 +4,18 @@ import { useEffect, useState } from "react";
 const Weather = () => {
 
 const location = {lat: 45.50884, lon:-73.58781}
-const { WEATHERBIT_KEY } = process.env;
+const { REACT_APP_WEATHERBIT_KEY } = process.env;
 const [weather, setWeather] = useState()
 
+  // This is the API call made when the banner is rendered on each page. 
+
   useEffect(() => {
-    fetch(`https://api.weatherbit.io/v2.0/current?lat=${location.lat}&lon=${location.lon}&key=9d083f17860b4ca29f63d032db8ab919&include=minutely`)
+    fetch(`https://api.weatherbit.io/v2.0/current?lat=${location.lat}&lon=${location.lon}&key=${REACT_APP_WEATHERBIT_KEY}`)
     .then(res => res.json())
     .then ((parsedData) => {
       setWeather(parsedData.data[0])
     }).catch ((error) => console.log(error))
   }, [])
-  
 
   return (
     <Wrapper>
@@ -22,7 +23,7 @@ const [weather, setWeather] = useState()
       <>
         <Title>{weather.city_name}'s weather</Title>
         <Top>
-          <img src={`https://www.weatherbit.io/static/img/icons/${weather.weather.icon}.png`}/>
+          <img alt={`today's meteo`} src={`https://www.weatherbit.io/static/img/icons/${weather.weather.icon}.png`}/>
           <Description>
             <Temp>{weather.temp} °C</Temp>
             <p>{weather.weather.description}</p>
@@ -46,6 +47,7 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h6`
+padding-top: 1vh;
   margin: 0;
 `
 
