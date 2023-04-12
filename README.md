@@ -1,4 +1,4 @@
-### MemoMinder
+# MemoMinder
 Welcome to my final project for Concordia Web Development Bootcamp
 
 ## Table of Contents
@@ -11,7 +11,7 @@ Welcome to my final project for Concordia Web Development Bootcamp
 **MemoMinder** is a journaling app that serves as a simple companion for its users. It features a brain dump, scheduled reminder, calendar, and journal logs, allowing users to stay on top of their tasks and organize their thoughts in one place. Additionally, MemoMinder provides basic weather information, making it a versatile app for everyday use.
 
 ## APIs Used
-This project uses the following API:
+This project uses the following API and librairies:
 - [WeatherbitAPI] provides simple weather information. (https://www.weatherbit.io/)
 - [Auth0] allows user a secure access to the website. (https://auth0.com/)
 - [React-calendar] is the simple, user-friendly calendar used. (https://www.npmjs.com/package/react-calendar)
@@ -19,7 +19,7 @@ This project uses the following API:
 - [React-datepicker] is used for every scheduling action (https://www.npmjs.com/package/react-datepicker)
 
 ## Installation
-To install [project name], follow these steps:
+To install **MemoMinder**, follow these steps:
 
 1. In both client and server directories :
 ```
@@ -31,4 +31,4 @@ yarn install
 yarn start
 ```
 ## Contributing
-Contributions are always welcome! For any interests, questions and contributions, please DM me.
+Contributions are always welcome! For any interests, questions and contributions, please DM me!

@@ -192,7 +192,7 @@ const AffInput = styled.input`
 const Submit = styled.button`
   margin-right: 15px;
   height: 42px;
-  width: 193px;
+  width: 198px;
   padding-left: 10px;
   padding-right: 10px;
   &:hover {
