@@ -23,7 +23,11 @@ const Homepage = () => {
   // Here we fetch the reminders to be shown as the default view, and uses Today's
   // formatted date to do so.
 
-  setDate(paramsToday)
+  useEffect(() => {
+    setDate(paramsToday)
+    getReminders()
+
+  }, [])
 
   const getReminders = () => {
     fetch(`/getReminders/${paramsToday}`)
@@ -33,10 +37,6 @@ const Homepage = () => {
     })
     .catch(error => console.log(error.stack))
   }
-
-  useEffect(() => {
-    getReminders()
-  },[])
 
   // This is the section that makes the calendar actually navigates to the dailyView
   // of whatever date is being clicked. Also sets "paramsDate" as context-available

@@ -23,12 +23,12 @@ To install **MemoMinder**, follow these steps:
 
 1. In both client and server directories :
 ```
-yarn install
+npm install
 ```
 2. Make sure you provide the necessary keys for the APIs to function correctly
 3. And to start the application in a browser
 ```
-yarn start
+npm start
 ```
 ## Contributing
 Contributions are always welcome! For any interests, questions and contributions, please DM me!

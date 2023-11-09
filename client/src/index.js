@@ -6,7 +6,6 @@ import { UserProvider } from "./UserContext";
 import { DateProvider } from './DateContext';
 
 const { REACT_APP_AUTH0_DOMAIN, REACT_APP_AUTH0_CLIENT_ID } = process.env; 
-console.log( REACT_APP_AUTH0_CLIENT_ID, REACT_APP_AUTH0_DOMAIN)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
