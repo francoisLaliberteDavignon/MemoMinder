@@ -3,13 +3,12 @@
 const { MongoClient } = require("mongodb")
 require("dotenv").config();
 const { MONGO_URI } = process.env;
+const { v4: uuidv4 } = require("uuid");
 
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-
-const { v4: uuidv4 } = require("uuid");
 
 /***********************************************************************/
 
@@ -359,7 +358,7 @@ module.exports = {
 	getJournalEntries, 
 	postNewJournalEntry,
 	getAffirmations,
-  postNewAffirmation,
+  	postNewAffirmation,
 	getReminders,
 	getRemindersByDate,
 	postNewReminder,

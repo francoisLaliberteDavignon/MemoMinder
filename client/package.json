@@ -55,5 +55,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.53.0",
+    "eslint-config-react-app": "^7.0.1",
+    "jest": "^27.5.1",
+    "jest-environment-jsdom": "^29.7.0"
   }
 }

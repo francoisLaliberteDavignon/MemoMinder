@@ -24,7 +24,7 @@ const Calendrier = ({handleClickDay}) => {
     let newDate = new Date(date);
     newDate.setDate(newDate.getDate() - 1);
 
-    const findReminder = reminders.forEach(reminder => {
+    const findReminder = (reminders || []).forEach(reminder => {
         if (isSameDay(new Date(reminder.start), newDate)) {
           sum+=1;
         }
