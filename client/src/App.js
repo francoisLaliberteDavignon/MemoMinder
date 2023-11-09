@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import GlobalStyles from "./GlobalStyles";
 
-import Login from "./LoginPage";
+import LoginPage from "./LoginPage";
 import Homepage from './components/HomePage/Homepage'
 import DailyView from "./components/Journal/DailyView";
 
@@ -12,7 +12,7 @@ const App = () => {
     <BrowserRouter>
         <GlobalStyles/>
         <Routes>
-            <Route path='/' element={<Login/>}/>
+            <Route path='/' element={<LoginPage/>}/>
             <Route path={`/homepage`} element={<Homepage/>}/>
             <Route path='/dailyview/:date' element={<DailyView/>}/>
         </Routes>
