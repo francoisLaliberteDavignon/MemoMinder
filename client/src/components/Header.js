@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 
-import { UserContext } from "../src/UserContext";
+import { UserContext } from "../UserContext";
 
 import { GiFeather } from "react-icons/gi";
 import { TbScribble } from "react-icons/tb";

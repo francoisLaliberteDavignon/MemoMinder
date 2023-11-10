@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useState, useEffect } from "react"
-import Weather from "./components/Journal/Weather"
+import Weather from "./Journal/Weather"
 
 const Banner = () => {
 

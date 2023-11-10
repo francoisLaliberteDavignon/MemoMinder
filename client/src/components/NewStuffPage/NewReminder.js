@@ -1,98 +1,99 @@
-import styled from "styled-components"
-import { useState } from "react"
+import styled from "styled-components";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePickerButton from "./DatePickerButton";
 
-const NewReminder = ({getReminders}) => {
-
-  const [ postData, setPostData ] = useState(null)
-  const [inputValue, setInputValue] = useState('');
+const NewReminder = ({ getReminders }) => {
+  const [postData, setPostData] = useState(null);
+  const [inputValue, setInputValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [ start, setStart ] = useState(new Date())
+  const [start, setStart] = useState(new Date());
 
   // This handles the submission of a reminder through the form which requires a
   // text input and a date provided by datePicker
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
     setIsSubmitting(true);
 
     fetch("/newReminder", {
       method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ...postData
+        ...postData,
+      }),
+    })
+      .then((res) => res.json())
+      .then((parsedData) => {
+        setIsSubmitting(false);
+        setInputValue("");
+        getReminders();
       })
-    })
-    .then((res) => res.json())
-    .then(parsedData => {
-      setIsSubmitting(false);
-      setInputValue('');
-      getReminders();
-    })
-    .catch((error) => {
-      console.log(error)
-      setIsSubmitting(false);
-    });
-  }
+      .catch((error) => {
+        console.log(error);
+        setIsSubmitting(false);
+      });
+  };
 
   const handleChange = (e) => {
     const task = e.target.name;
     const value = e.target.value;
-    setPostData(values => ({
-      ...values, 
-      [task]: value, 
-      start: start.toISOString().substring(0, 10), 
-    }))
+    setPostData((values) => ({
+      ...values,
+      [task]: value,
+      start: start.toISOString().substring(0, 10),
+    }));
     setInputValue(value);
-  }
+  };
 
   const handleChangeStart = (date) => {
-    setStart(date)
-    setPostData(values => ({...values, 
-      start: date.toISOString().substring(0, 10)
-    }))
-  }
+    setStart(date);
+    setPostData((values) => ({
+      ...values,
+      start: date.toISOString().substring(0, 10),
+    }));
+  };
 
   return (
-      <Form>
-        <InputField>
-          <Input 
-            name="task"
-            placeholder="What do you want to schedule...?"
-            onChange={(e) => handleChange(e)}
-            value={inputValue}/>
-          <DatePickerWrapper>
-            <DatePick
-              customInput={<DatePickerButton />}
-              placeholderText="What will you forget...?"
-              selected={start}
-              onChange={(date) => handleChangeStart(date)}
-              placeholder="When to remember?"
-              value={start}
-            />
-          </DatePickerWrapper>
-        </InputField>
-        <Submit
-          onClick={handleSubmit}             
-          disabled={isSubmitting || inputValue.trim() === ''} 
-        >{isSubmitting ? 'Adding...' : 'Add to calendar'}
-        </Submit>
-      </Form>
-  )
-}
+    <Form>
+      <InputField>
+        <Input
+          name="task"
+          placeholder="What do you want to schedule...?"
+          onChange={(e) => handleChange(e)}
+          value={inputValue}
+        />
+        <DatePickerWrapper>
+          <DatePick
+            customInput={<DatePickerButton />}
+            placeholderText="What will you forget...?"
+            selected={start}
+            onChange={(date) => handleChangeStart(date)}
+            placeholder="When to remember?"
+            value={start}
+          />
+        </DatePickerWrapper>
+      </InputField>
+      <Submit
+        onClick={handleSubmit}
+        disabled={isSubmitting || inputValue.trim() === ""}
+      >
+        {isSubmitting ? "Adding..." : "Add to calendar"}
+      </Submit>
+    </Form>
+  );
+};
 
-export default NewReminder
+export default NewReminder;
 
 const Form = styled.form`
   margin-top: 10px;
   font-size: 15px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-end;
 `;
@@ -107,7 +108,7 @@ const InputField = styled.div`
   height: 10vh;
   margin-top: 10px;
   padding: 5px 15px;
-`
+`;
 
 const Input = styled.textarea`
   resize: none;
@@ -127,17 +128,17 @@ const Input = styled.textarea`
 `;
 
 const DatePickerWrapper = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: flex-end;
-`
+`;
 
 const DatePick = styled(DatePicker)`
   height: 25px;
   border: none;
-`
+`;
 
 const Submit = styled.button`
   margin-top: 50px;
   width: 225px;
-`
+`;

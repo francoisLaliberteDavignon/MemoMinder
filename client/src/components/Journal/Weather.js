@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const Weather = () => {
 
-const location = {lat: 45.50884, lon:-73.58781}
+const location = {lat: 45.30763200, lon: -74.63443800}
 const { REACT_APP_WEATHERBIT_KEY } = process.env;
 const [weather, setWeather] = useState()
 
@@ -19,7 +19,7 @@ const [weather, setWeather] = useState()
 
   return (
     <Wrapper>
-      {!weather? <Title>Weather</Title> :
+      {!weather ? <Title>Weather</Title> :
       <>
         <Title>{weather.city_name}'s weather</Title>
         <Top>

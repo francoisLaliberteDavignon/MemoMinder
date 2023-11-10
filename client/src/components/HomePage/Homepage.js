@@ -2,15 +2,14 @@ import { useContext, useState, useEffect } from "react";
 import { DateContext } from "../../DateContext";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
-import Header from "../../Header";
-import Banner from "../../Banner";
+import { constants } from "../../constants";
+import Header from "../Header";
+import Banner from "../Banner";
+import Footer from "../Footer";
 
 import Calendrier from "./Calendar";
 import DailySpread from "./DailySpread";
 import BrainDump from "../Journal/BrainDump";
-
-import Footer from "../../Footer";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -42,6 +41,7 @@ const Homepage = () => {
   let paramsDate;
 
   const handleClickDay = (e) => {
+    console.log(e);
     paramsDate = e.toISOString().substring(0, 10);
     if (paramsDate !== paramsToday) {
       setDate(paramsDate);
@@ -61,7 +61,7 @@ const Homepage = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <Header />
       <Banner paramsToday={paramsToday} />
       <Main className="wrapper">
@@ -93,18 +93,27 @@ const Homepage = () => {
         </Left>
       </Main>
       <Footer />
-    </>
+    </Wrapper>
   );
 };
 
 export default Homepage;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+`;
+
 const Main = styled.div`
-  margin: 30px 30px 0 30px;
-  height: 65vh;
+  height: 65dvh;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  flex: 1 0 auto;
 `;
 
 const Left = styled.div`
@@ -115,7 +124,7 @@ const Left = styled.div`
 
 const NavDiv = styled.div`
   display: flex;
-  padding-right: 50px;
+  padding-right: ${constants.DEFAULT_FRAME_PADDING};
   justify-content: space-evenly;
   margin-top: 12px;
   margin-bottom: 48px;
