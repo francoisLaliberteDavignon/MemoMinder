@@ -1,21 +1,19 @@
-import styled from "styled-components"
-import { useState } from "react"
+import styled from "styled-components";
+import { useState } from "react";
 
-const NewBrainer = ({getBrainDump}) => {
-
-  const [ postData, setPostData ] = useState()
-  const [inputValue, setInputValue] = useState('');
+const NewBrainer = ({ getBrainDump }) => {
+  const [postData, setPostData] = useState();
+  const [inputValue, setInputValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isImportant, setIsImportant ] = useState(false)
+  const [isImportant, setIsImportant] = useState(false);
 
   // This handles toggling the styling when a brainer is checked as important
 
   const handleChecked = () => {
-    setIsImportant(!isImportant)
-  }
+    setIsImportant(!isImportant);
+  };
 
   // This handles the POSTing of the new brainer when the form is submitted
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,66 +23,64 @@ const NewBrainer = ({getBrainDump}) => {
     fetch("/newBrainer", {
       method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         isImportant: isImportant,
-        ...postData
+        ...postData,
+      }),
+    })
+      .then((res) => res.json())
+      .then((parsedData) => {
+        setIsSubmitting(false);
+        setInputValue("");
+        getBrainDump();
       })
-    })
-    .then((res) => res.json())
-    .then(parsedData => {
-      setIsSubmitting(false);
-      setInputValue('');
-      getBrainDump();
-    })
-    .catch((error) => {
-      console.log(error.stack)
-      setIsSubmitting(false);
-    });  
-  }
+      .catch((error) => {
+        console.log(error.stack);
+        setIsSubmitting(false);
+      });
+  };
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setPostData(values => ({...values, [name]: value}))
+    setPostData((values) => ({ ...values, [name]: value }));
     setInputValue(value);
-  }
-  
+  };
+
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
       <InputField>
-        <Input 
-          name={"task"} 
+        <Input
+          name={"task"}
           onChange={(e) => handleChange(e)}
           placeholder="Add something to your brain dump"
-          value={inputValue}   
+          value={inputValue}
         />
         <Options>
           <label htmlFor="isImportant">Is this important?</label>
-          <CheckBox 
-            name="isImportant" 
+          <CheckBox
+            name="isImportant"
             type="checkbox"
-            onChange={handleChecked}></CheckBox>
+            onChange={handleChecked}
+          ></CheckBox>
         </Options>
       </InputField>
-      <Submit 
-        type="Submit"
-        disabled={isSubmitting || inputValue.trim() === ''}
-        >{isSubmitting ? 'Adding...' : 'Add to your brain dump!'}
+      <Submit type="Submit" disabled={isSubmitting || inputValue.trim() === ""}>
+        {isSubmitting ? "Adding..." : "Add to your brain dump!"}
       </Submit>
     </Form>
-  )
-}
+  );
+};
 
-export default NewBrainer
-
+export default NewBrainer;
 
 const Form = styled.form`
   margin-top: 10px;
   font-size: 15px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-end;
   margin-left: 4px;
@@ -101,7 +97,7 @@ const InputField = styled.div`
   height: 10vh;
   margin-top: 10px;
   padding: 5px 15px;
-`
+`;
 
 const Input = styled.textarea`
   resize: none;
@@ -123,12 +119,12 @@ const Input = styled.textarea`
 const Options = styled.div`
   display: flex;
   align-items: flex-end;
-`
+`;
 
-const CheckBox = styled.input``
+const CheckBox = styled.input``;
 
 const Submit = styled.button`
-border: none;
+  border: none;
   margin-top: 50px;
   width: 327px;
-`
+`;

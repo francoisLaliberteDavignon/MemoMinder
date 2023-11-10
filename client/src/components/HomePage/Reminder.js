@@ -3,42 +3,40 @@ import { useState } from 'react';
 import { TbCheck } from "react-icons/tb";
 
 const Reminder = ({reminder, getReminders}) => {
-
-  const [ isHovered, setIsHovered ] = useState(false)
-  const [ isDeleted, setIsDeleted ] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const handleClick = () => {
-    setIsDeleted(true)
+    setIsDeleted(true);
 
     fetch(`/delete/reminder/${reminder._id}`, {
       method: "DELETE",
       headers: {
-        "Accept": "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ reminder: reminder }),
     })
-    .then(res => res.json())
-    .then(() => getReminders())
-    .catch(error => console.log(error.stack))
-  }
+      .then((res) => res.json())
+      .then(() => getReminders())
+      .catch((error) => console.log(error.stack));
+  };
 
   return (
     <Wrapper>
-      <Item 
+      <Item
         onClick={handleClick}
         className={isDeleted ? "task-deleted" : ""}
-        onMouseEnter={() => setIsHovered(true)} 
-        onMouseLeave={() => setIsHovered(false)}>
-      <div className={isHovered ? "title-hovered" : ""}>
-        <p>{reminder.task}</p>
-      </div>
-      <div>
-        {isHovered ? <TbCheck/> : <>X</>}
-      </div>
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className={isHovered ? "title-hovered" : ""}>
+          <p>{reminder.task}</p>
+        </div>
+        <div>{isHovered ? <TbCheck /> : <>X</>}</div>
       </Item>
     </Wrapper>
-  )
+  );
 }
 
 export default Reminder

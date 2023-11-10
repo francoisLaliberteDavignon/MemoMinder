@@ -1,12 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-const Entry = ({entry}) => {
-  return (
-    <Item key={entry._id}>{entry.input}</Item>
-  )
-}
+const Entry = ({ entry }) => {
+  return <Item key={entry._id}>{entry.input}</Item>;
+};
 
-export default Entry
+export default Entry;
 
 const Item = styled.p`
   width: 35vw;
@@ -14,4 +12,4 @@ const Item = styled.p`
   display: flex;
   align-items: center;
   font-size: 15px;
-`
+`;

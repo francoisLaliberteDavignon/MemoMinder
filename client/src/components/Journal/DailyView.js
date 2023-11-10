@@ -1,13 +1,12 @@
 import styled from "styled-components"
-
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-
-import Header from "../../Header"
-import Banner from "../../Banner"
+import Header from "../Header"
+import Banner from "../Banner";
+import Footer from "../Footer";
 import DailySpread from "../HomePage/DailySpread"
 import DailyEntries from "./DailyEntries"
-import Footer from "../../Footer"
+
 
 const DailyView = () => {
 

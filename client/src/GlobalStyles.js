@@ -47,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background-color: white;
-    min-width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     font-family: var(--font-body);
